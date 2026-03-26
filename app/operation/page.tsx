@@ -118,14 +118,13 @@ export default function OperationPage() {
           {/* 03 微信公众号项目 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-lg transition-all duration-300">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
-              {/* 这里稍微调大了 max-w-xl 并配合 whitespace-nowrap 解决换行 */}
-              <div className="flex-1 lg:max-w-xl"> 
+              <div className="flex-1 lg:max-w-md"> 
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Users className="w-6 h-6 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1 whitespace-nowrap">03 微信｜成都理工大学公众号</h2>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">03 公众号｜成都理工大学</h2>
                     <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
                   </div>
                 </div>
