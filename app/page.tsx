@@ -93,4 +93,48 @@ export default function HomePage() {
             </Link>
 
             {/* 设计作品 */}
-            <Link href="/design" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg border border-
+            <Link href="/design" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg border border-border/50">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-40 transition-transform duration-500 group-hover:scale-110" 
+                style={{ backgroundImage: 'url(/v0-designer-brand-tk/sheji.jpg)' }} 
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-muted to-secondary/30" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                <PenTool className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="font-serif text-2xl mb-3 text-foreground">设计作品</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">海报设计 · 摄影作品 · 绘画原画</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights */}
+      <section className="py-24 px-4 bg-muted/30">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="font-serif text-4xl font-light mb-12">亮点经历</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="p-6 bg-background rounded-lg shadow-sm">
+              <div className="text-3xl font-serif text-primary mb-2">1000+</div>
+              <div className="text-sm text-muted-foreground">获赞总数</div>
+            </div>
+            <div className="p-6 bg-background rounded-lg shadow-sm">
+              <div className="text-3xl font-serif text-primary mb-2">芭莎</div>
+              <div className="text-sm text-muted-foreground">设计获奖</div>
+            </div>
+            <div className="p-6 bg-background rounded-lg shadow-sm">
+              <div className="text-3xl font-serif text-primary mb-2">官方IP</div>
+              <div className="text-sm text-muted-foreground">校级IP负责人</div>
+            </div>
+            <div className="p-6 bg-background rounded-lg shadow-sm">
+              <div className="text-3xl font-serif text-primary mb-2">10+</div>
+              <div className="text-sm text-muted-foreground">项目经验</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  )
+}
