@@ -2,17 +2,18 @@
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Award, Star, Smile, Palette } from "lucide-react"
+import { TrendingUp, Users, Zap, CheckCircle2, ExternalLink, Palette } from "lucide-react"
 // 引入 Next.js 的 Image 组件
 import Image from "next/image"
+import Link from "next/link"
 
 export default function IPDesignPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6 hero-text-shadow">
             IP设计
@@ -23,24 +24,23 @@ export default function IPDesignPage() {
         </div>
       </section>
 
-      {/* Projects */}
+      {/* Projects Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto space-y-16">
+        <div className="max-w-6xl mx-auto space-y-12">
           
-          {/* 01 成都理工大学体育学院 - 文字在上图片在下（田字格） */}
-          <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group hover:shadow-md transition-shadow duration-300">
+          {/* 01 成都理工大学体育学院 - 精准修改部分 */}
+          <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden">
             {/* 文字描述部分 - 居中排列 */}
             <div className="max-w-3xl mx-auto text-center mb-12">
               <div className="flex items-center gap-4 mb-6 justify-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  {/* 更换为 Palette 图标，更符合设计主题 */}
                   <Palette className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
                     成都理工大学体育学院
                   </h2>
-                  <p className="text-sm text-primary font-medium tracking-wide">品牌形象与吉祥物设计</p>
+                  <p className="text-sm text-primary font-medium tracking-wide italic">品牌形象与吉祥物设计</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -50,51 +50,65 @@ export default function IPDesignPage() {
               </p>
             </div>
 
-            {/* 图片展示部分 - 田字格排列 */}
-            <div className="space-y-6">
-              {/* 第一排：Logo + 展示稿 */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
-                  <Image 
-                    src="/v0-designer-brand-tk/logo.png" 
-                    alt="体育学院Logo设计" 
-                    fill 
-                    className="object-contain"
-                  />
-                </div>
-                <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
-                  <Image 
-                    src="/v0-designer-brand-tk/zhanshi.jpg" 
-                    alt="Logo视觉展示" 
-                    fill 
-                    className="object-contain"
-                  />
-                </div>
+            {/* 图片展示区：精准修改为文字在上、单独放图 */}
+            <div className="space-y-12 flex flex-col items-center">
+              
+              {/* 1. Logo部分 - 居中、圆形、可点击、带标题 */}
+              <div className="w-full flex flex-col items-center gap-6">
+                <Link 
+                  href="https://mp.weixin.qq.com/s/kjHRJwrk5teJv_ApwJPC_w" 
+                  target="_blank"
+                  className="relative group/logo"
+                >
+                  {/* 使用 ring 和 shadow 装饰圆形 Logo */}
+                  <div className="w-[180px] h-[180px] rounded-full overflow-hidden border-2 border-primary/20 bg-white shadow-lg p-3 ring-4 ring-primary/5 transition-transform group-hover/logo:scale-105">
+                    <img 
+                      src="/v0-designer-brand-tk/logo0.png" 
+                      alt="体育学院圆形Logo设计" 
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  {/* 点击跳转引导标签 */}
+                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover/logo:opacity-100 rounded-full transition-opacity flex items-center justify-center">
+                    <ExternalLink className="w-8 h-8 text-white/80" />
+                  </div>
+                </Link>
+                {/* 标题：与前面两部分样式一致 */}
+                <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
+                  Logo设计
+                </h3>
               </div>
 
-              {/* 第二排：吉祥物小体1 + 小体2 */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
-                  <Image 
-                    src="/v0-designer-brand-tk/xiaoti1.png" 
-                    alt="吉祥物小体角色设计1" 
-                    fill 
-                    className="object-contain"
+              {/* 2. 展示图 zhanshi.jpg - 单独放，原尺寸比例 */}
+              <div className="w-full flex flex-col items-center gap-6">
+                <div className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
+                  <img 
+                    src="/v0-designer-brand-tk/zhanshi.jpg" 
+                    alt="Logo视觉展示" 
+                    className="w-full h-auto object-contain block p-0.5"
                   />
                 </div>
-                <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
-                  <Image 
-                    src="/v0-designer-brand-tk/xiaoti2.png" 
-                    alt="吉祥物小体角色设计2" 
-                    fill 
-                    className="object-contain"
+                {/* 此图为展示，不需要单独标题 */}
+              </div>
+
+              {/* 3. IP角色 xt.jpg - 单独放，原尺寸比例，带标题 */}
+              <div className="w-full flex flex-col items-center gap-6 pt-6 border-t border-border/60">
+                <div className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
+                  <img 
+                    src="/v0-designer-brand-tk/xt.jpg" 
+                    alt="吉祥物IP角色设计xt" 
+                    className="w-full h-auto object-contain block p-0.5"
                   />
                 </div>
+                {/* 标题：与前面两部分样式一致 */}
+                <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
+                  IP角色设计
+                </h3>
               </div>
             </div>
           </div>
 
-          {/* 02 时尚芭莎获奖作品 - 替换为真实图片 */}
+          {/* 02 时尚芭莎项目 (保持不变) */}
           <div className="bg-card rounded-2xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
             <div className="flex flex-col md:flex-row gap-10 items-start">
               <div className="flex-1 space-y-4">
@@ -103,10 +117,10 @@ export default function IPDesignPage() {
                     <Award className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1 whitespace-nowrap">
                       时尚芭莎获奖作品
                     </h2>
-                    <p className="text-sm text-accent font-medium tracking-wide">莎莎IP设计 · 荣誉奖项</p>
+                    <p className="text-sm text-accent font-medium tracking-wide italic">莎莎IP设计 · 荣誉奖项</p>
                   </div>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
@@ -118,11 +132,10 @@ export default function IPDesignPage() {
               
               <div className="w-full md:w-2/5 shrink-0">
                 <div className="aspect-video relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
-                  {/* 这里替换为你时尚芭莎的作品图片，例如 bazaar.jpg */}
-                  <Image 
-                    src="/v0-designer-brand-tk/bazaar.jpg" 
-                    alt="时尚芭莎获奖作品莎莎" 
-                    fill 
+                  <Image 
+                    src="/v0-designer-brand-tk/bazaar.jpg" 
+                    alt="时尚芭莎获奖作品莎莎" 
+                    fill 
                     className="object-contain"
                   />
                 </div>
@@ -130,17 +143,17 @@ export default function IPDesignPage() {
             </div>
           </div>
 
-          {/* 03 成都理工大学官方IP栗子 - 替换为真实图片 */}
-          <div className="bg-card rounded-2xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
+          {/* 03 栗子项目 (保持不变) */}
+          <div className="bg-card rounded-2xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow overflow-hidden">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                 <Smile className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1 whitespace-nowrap">
                   成都理工大学官方IP
                 </h2>
-                <p className="text-sm text-primary font-medium tracking-wide">栗子表情包 · 系列插图</p>
+                <p className="text-sm text-primary font-medium tracking-wide italic">栗子表情包 · 系列插图</p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
@@ -150,12 +163,11 @@ export default function IPDesignPage() {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[1, 2, 3, 4].map((num) => (
-                <div key={num} className="aspect-square relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
-                  {/* 这里替换为你栗子的表情包图片，例如 lizi1.png, lizi2.png... */}
-                  <Image 
-                    src={`/v0-designer-brand-tk/lizi${num}.png`} 
-                    alt={`栗子表情包${num}`} 
-                    fill 
+                <div key={num} className="aspect-square relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1 transition-transform duration-300 hover:scale-[1.03]">
+                  <Image 
+                    src={`/v0-designer-brand-tk/lizi${num}.png`} 
+                    alt={`栗子表情包${num}`} 
+                    fill 
                     className="object-contain"
                   />
                 </div>
@@ -166,7 +178,7 @@ export default function IPDesignPage() {
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Skills Section (保持不变) */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl font-bold text-foreground mb-10 hero-text-shadow">设计技能</h2>
