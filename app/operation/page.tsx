@@ -26,6 +26,7 @@ export default function OperationPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
 
+      {/* Hero */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">账号运营</h1>
@@ -50,25 +51,24 @@ export default function OperationPage() {
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布 20+ 篇北海道观光笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行 10+ 家店铺／景点取材，完成沟通、拍摄与内容制作。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布20+篇北海道观光笔记。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行10+家店铺取材，完成沟通、拍摄与内容制作。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>参与企划、剪辑与视觉设计，协助建立风格体系。</span></li>
                 </ul>
               </div>
 
               <div className="w-full lg:flex-1">
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
                   <Link href="https://xhslink.com/m/3SDaawO9bWr" target="_blank" className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all bg-white overflow-hidden group/profile">
-                    <Image src="/v0-designer-brand-tk/zhuye.jpg" alt="Ayaka酱主页" fill className="object-contain p-1" />
+                    <Image src="/v0-designer-brand-tk/zhuye.jpg" alt="主页" fill className="object-contain p-1" />
                     <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center"><ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" /></div>
                   </Link>
-
                   <div className="w-[240px] h-[400px] relative mt-8 sm:mt-0">
                     {ayakaNotes.map((note, index) => (
                       <Link key={note.name} href={note.link} target="_blank" className="absolute block group/note transition-all duration-300 hover:scale-105 hover:!z-[100]" style={{ top: `${index * 30}px`, left: `${index * 30}px`, zIndex: index + 10 }}>
                         <div className="w-[180px] h-[320px] relative rounded-xl border-2 border-white shadow-2xl bg-white overflow-hidden">
                           <Image src={`/v0-designer-brand-tk/${note.name}`} alt="笔记" fill className="object-contain p-0.5" />
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center"><ExternalLink className="w-8 h-8 text-white/80" /></div>
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center z-10 rounded-xl"><ExternalLink className="w-8 h-8 text-white/80" /></div>
                         </div>
                       </Link>
                     ))}
@@ -78,9 +78,10 @@ export default function OperationPage() {
             </div>
           </div>
 
-          {/* 02 小红书｜个人账号 - 紧凑型瀑布流 */}
+          {/* 02 小红书｜个人账号 - 三列布局优化版 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
+              
               <div className="flex-1 lg:max-w-md">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -91,31 +92,31 @@ export default function OperationPage() {
                     <p className="text-sm text-primary font-medium tracking-wide">娱乐追星内容创作</p>
                   </div>
                 </div>
-                <ul className="space-y-3 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记 15+ 篇，累计获赞 58,000+。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>在选题、标题与平台表达节奏上形成敏锐判断力。</span></li>
+                <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记15+篇，累计获赞58,000+。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>在选题、标题与平台表达节奏上形成敏锐判断力。</span></li>
                 </ul>
               </div>
 
-              {/* 右侧：紧凑布局，消除留白 */}
+              {/* 右侧：三列布局，横向平铺，缩短高度 */}
               <div className="w-full lg:flex-1 flex justify-center lg:justify-end">
-                <div className="columns-2 gap-4 max-w-[360px]"> {/* 限制最大宽度，与01部分呼应 */}
+                <div className="columns-2 sm:columns-3 gap-3 max-w-[520px]"> {/* 增加列数至3，限制总宽度保持紧凑 */}
                   {personalNotes.map((note, index) => (
                     <Link 
                       key={index} 
                       href={note.link} 
                       target="_blank" 
-                      className="block mb-4 break-inside-avoid group/item transition-transform hover:scale-[1.02]"
+                      className="block mb-3 break-inside-avoid group/item transition-transform hover:scale-[1.03]"
                     >
-                      <div className="relative rounded-xl border-2 border-primary/5 shadow-md overflow-hidden bg-white">
-                        {/* 重要：这里不再使用 fill，而是使用普通的 img 逻辑让高度自适应 */}
+                      <div className="relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
+                        {/* 使用原生 img + h-auto 自动适配图片比例，杜绝留白 */}
                         <img 
                           src={`/v0-designer-brand-tk/${note.name}`} 
                           alt="笔记" 
-                          className="w-full h-auto object-contain block" 
+                          className="w-full h-auto object-contain block p-0.5" 
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/20 transition-colors flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/15 transition-colors flex items-center justify-center">
                           <ExternalLink className="text-white opacity-0 group-hover/item:opacity-100 transition-opacity w-5 h-5" />
                         </div>
                       </div>
@@ -123,6 +124,7 @@ export default function OperationPage() {
                   ))}
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -141,7 +143,7 @@ export default function OperationPage() {
               <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>主导学校官方毕业季内容策划，最终阅读量达 1.6 万+。</span></li>
             </ul>
             <div className="w-full aspect-[16/9] relative rounded-xl overflow-hidden border border-border bg-white">
-               <Image src="/v0-designer-brand-tk/wechat-project.jpg" alt="毕业季专题" fill className="object-contain" />
+               <Image src="/v0-designer-brand-tk/wechat-project.jpg" alt="毕业季" fill className="object-contain" />
             </div>
           </div>
         </div>
