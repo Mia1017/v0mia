@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Award, Star, Smile } from "lucide-react"
+import { ImagePlaceholder } from "@/components/image-placeholder"
 
 export default function IPDesignPage() {
   return (
@@ -41,20 +42,16 @@ export default function IPDesignPage() {
               将体育精神与学院特色相融合，打造具有辨识度的视觉识别系统。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/ip-cdut-sports-logo.jpg" 
-                  alt="体育学院Logo设计" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/ip-cdut-sports-character.jpg" 
-                  alt="体育学院角色设计" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImagePlaceholder
+                icon={Star}
+                text="Logo设计"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Star}
+                text="角色设计"
+                aspectRatio="aspect-square"
+              />
             </div>
           </div>
 
@@ -75,13 +72,11 @@ export default function IPDesignPage() {
               参与时尚芭莎IP设计大赛，作品「莎莎」荣获奖项。
               设计融合时尚元素与可爱风格，展现品牌年轻化的活力形象。
             </p>
-            <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-              <img 
-                src="/ip-bazaar-shasha.jpg" 
-                alt="时尚芭莎莎莎IP设计" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <ImagePlaceholder
+              icon={Award}
+              text="获奖IP设计作品"
+              aspectRatio="aspect-video"
+            />
           </div>
 
           {/* 成都理工大学官方IP栗子 */}
@@ -102,34 +97,26 @@ export default function IPDesignPage() {
               为校园文化传播增添趣味性和亲和力。
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/ip-lizi-emoji-1.jpg" 
-                  alt="栗子表情包1" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/ip-lizi-emoji-2.jpg" 
-                  alt="栗子表情包2" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/ip-lizi-emoji-3.jpg" 
-                  alt="栗子表情包3" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/ip-lizi-emoji-4.jpg" 
-                  alt="栗子表情包4" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImagePlaceholder
+                icon={Smile}
+                text="栗子1"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Smile}
+                text="栗子2"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Smile}
+                text="栗子3"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Smile}
+                text="栗子4"
+                aspectRatio="aspect-square"
+              />
             </div>
           </div>
 

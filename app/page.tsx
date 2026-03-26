@@ -16,12 +16,8 @@ export default function HomePage() {
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           {/* Avatar */}
           <div className="mb-8 flex justify-center">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
-              <img
-                src="/avatar-placeholder.jpg"
-                alt="个人头像"
-                className="w-full h-full object-cover"
-              />
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <div className="text-5xl md:text-6xl font-serif text-primary/60">作</div>
             </div>
           </div>
           

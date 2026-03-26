@@ -13,12 +13,8 @@ export default function AboutPage() {
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           {/* Avatar */}
           <div className="mb-8 flex justify-center">
-            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
-              <img
-                src="/avatar-placeholder.jpg"
-                alt="个人头像"
-                className="w-full h-full object-cover"
-              />
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <div className="text-6xl md:text-7xl font-serif text-primary/60">作</div>
             </div>
           </div>
           

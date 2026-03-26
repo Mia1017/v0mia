@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ExternalLink, TrendingUp, Users, Zap } from "lucide-react"
+import { ImagePlaceholder } from "@/components/image-placeholder"
 
 export default function OperationPage() {
   return (
@@ -40,13 +41,11 @@ export default function OperationPage() {
               负责小红书账号的日常运营，包括内容策划、发布排期、数据分析及用户互动。
               深入了解小红书平台规则和算法，掌握爆款内容创作技巧。
             </p>
-            <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-              <img 
-                src="/operation-xiaohongshu-internship.jpg" 
-                alt="小红书运营实习作品" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <ImagePlaceholder
+              icon={TrendingUp}
+              text="小红书运营作品"
+              aspectRatio="aspect-video"
+            />
           </div>
 
           {/* 个人账号 */}
@@ -67,20 +66,16 @@ export default function OperationPage() {
               多篇笔记获得千赞以上互动，积累了丰富的内容创作和社区运营经验。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="aspect-[4/5] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/operation-personal-note-1.jpg" 
-                  alt="个人笔记作品1" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-[4/5] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/operation-personal-note-2.jpg" 
-                  alt="个人笔记作品2" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImagePlaceholder
+                icon={Zap}
+                text="个人笔记作品 1"
+                aspectRatio="aspect-[4/5]"
+              />
+              <ImagePlaceholder
+                icon={Zap}
+                text="个人笔记作品 2"
+                aspectRatio="aspect-[4/5]"
+              />
             </div>
           </div>
 
@@ -101,13 +96,11 @@ export default function OperationPage() {
               参与成都理工大学官方公众号内容策划，负责毕业季专题长图推送的创意策划与设计执行。
               作品获得校内师生广泛好评与转发。
             </p>
-            <div className="aspect-[16/9] bg-muted rounded-lg overflow-hidden">
-              <img 
-                src="/operation-wechat-graduation.jpg" 
-                alt="毕业季长图推送" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <ImagePlaceholder
+              icon={Users}
+              text="毕业季长图推送"
+              aspectRatio="aspect-[16/9]"
+            />
           </div>
 
         </div>
