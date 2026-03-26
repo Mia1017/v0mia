@@ -71,27 +71,27 @@ export default function OperationPage() {
 
               {/* 右侧：图片展示组 */}
               <div className="w-full lg:flex-1">
-                <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
+                <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
                   
-                  {/* 个人主页截图 */}
+                  {/* 个人主页截图 - 修正 object-contain 确保底部完整显示 */}
                   <Link 
                     href="https://xhslink.com/m/3SDaawO9bWr" 
                     target="_blank" 
-                    className="w-[200px] sm:w-[220px] aspect-[9/16] relative rounded-2xl overflow-hidden border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all group/profile"
+                    className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all group/profile bg-white"
                   >
                     <Image 
                       src="/v0-designer-brand-tk/zhuye.jpg" 
                       alt="Ayaka酱个人主页"
                       fill
-                      className="object-cover"
+                      className="object-contain p-1" // 确保图片不被切掉边缘
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center rounded-2xl">
                       <ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" />
                     </div>
-                    <span className="absolute bottom-3 left-4 text-[10px] text-white/90 bg-black/30 px-2 py-0.5 rounded backdrop-blur-sm z-20">个人主页</span>
+                    <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-white/90 bg-black/30 px-2 py-0.5 rounded backdrop-blur-sm z-20">个人主页</span>
                   </Link>
 
-                  {/* 堆叠的笔记截图 - 使用纯 CSS 实现 */}
+                  {/* 堆叠的笔记截图 - 修正为 object-contain 且增加阴影 */}
                   <div className="w-[240px] h-[400px] relative mt-8 sm:mt-0">
                     {ayakaNotes.map((note, index) => (
                       <Link 
@@ -99,25 +99,25 @@ export default function OperationPage() {
                         href={note.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="absolute block group/note transition-all duration-300 hover:scale-110 hover:!z-[100]"
+                        className="absolute block group/note transition-all duration-300 hover:scale-105 hover:!z-[100]"
                         style={{
-                          top: `${index * 35}px`,
-                          left: `${index * 25}px`,
+                          top: `${index * 30}px`,
+                          left: `${index * 30}px`,
                           zIndex: index + 10,
                         }}
                       >
-                        <div className="w-[180px] aspect-[9/16] relative rounded-xl overflow-hidden border-2 border-white shadow-2xl cursor-pointer">
+                        <div className="w-[180px] h-[320px] relative rounded-xl border-2 border-white shadow-2xl cursor-pointer bg-white">
                           <Image 
                             src={`/v0-designer-brand-tk/${note.name}`} 
                             alt={note.label}
                             fill
-                            className="object-cover"
+                            className="object-contain p-0.5" // 关键：确保底部点赞收藏可见
                           />
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center z-10">
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center z-10 rounded-xl">
                             <ExternalLink className="w-8 h-8 text-white/80" />
                           </div>
                           {index === 2 && (
-                            <span className="absolute top-2 right-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full z-20 shadow-lg">
+                            <span className="absolute top-2 right-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full z-20 shadow-lg font-bold">
                               爆款
                             </span>
                           )}
