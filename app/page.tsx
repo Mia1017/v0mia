@@ -68,19 +68,18 @@ export default function HomePage() {
               <img 
                 src="/operation-bg.jpg" 
                 alt="账号运营背景" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
               />
-              <div className="absolute inset-0 bg-black/0" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Sparkles className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Sparkles className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-white">账号运营</h3>
-                <p className="text-sm text-white/80 leading-relaxed">
+                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-foreground">账号运营</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   小红书运营 · 爆款内容 · 公众号策划
                 </p>
                 <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-white text-sm flex items-center gap-1">
+                  <span className="text-primary text-sm flex items-center gap-1">
                     查看详情 <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
