@@ -1,3 +1,5 @@
+"use client" // 💡 必须有这一行！它允许你使用 onError 等交互功能
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -14,7 +16,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-muted/40 via-background to-secondary/20" />
         
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-          {/* Avatar - 这里已经修好了嵌套问题 */}
+          {/* Avatar - 修复了标签嵌套并支持交互报错处理 */}
           <div className="mb-8 flex justify-center">
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl bg-white flex items-center justify-center relative">
               <img 
@@ -22,8 +24,12 @@ export default function HomePage() {
                 alt="Mia"
                 className="w-full h-full object-cover"
                 onError={(e) => {
+                  // 如果图片加载失败，显示备用的“作”字
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<div class="text-5xl md:text-6xl font-serif text-primary/60">作</div>';
+                  const parent = e.currentTarget.parentElement;
+                  if (parent) {
+                    parent.innerHTML = '<div class="text-5xl md:text-6xl font-serif text-primary/60">作</div>';
+                  }
                 }}
               />
             </div>
@@ -78,11 +84,6 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   小红书运营 · 爆款内容 · 公众号策划
                 </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
-                    查看详情 <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
               </div>
             </Link>
 
@@ -97,11 +98,6 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Logo设计 · 角色设计 · 表情包
                 </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
-                    查看详情 <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
               </div>
             </Link>
 
@@ -116,45 +112,10 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   海报设计 · 摄影作品 · 绘画原画
                 </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
-                    查看详情 <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
               </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Highlights Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-6 text-balance">
-            亮点经历
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            <div className="p-6 bg-background rounded-lg shadow-sm">
-              <div className="text-3xl font-serif text-primary mb-2">1000+</div>
-              <div className="text-sm text-muted-foreground">小红书笔记获赞</div>
-            </div>
-            <div className="p-6 bg-background rounded-lg shadow-sm">
-              <div className="text-3xl font-serif text-primary mb-2">时尚芭莎</div>
-              <div className="text-sm text-muted-foreground">IP设计获奖</div>
-            </div>
-            <div className="p-6 bg-background rounded-lg shadow-sm">
-              <div className="text-3xl font-serif text-primary mb-2">官方IP</div>
-              <div className="text-sm text-muted-foreground">成都理工大学栗子</div>
-            </div>
-            <div className="p-6 bg-background rounded-lg shadow-sm">
-              <div className="text-3xl font-serif text-primary mb-2">实习经历</div>
-              <div className="text-sm text-muted-foreground">小红书账号运营</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
-    </div>
-  )
-}
