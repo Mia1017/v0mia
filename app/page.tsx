@@ -77,7 +77,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <Sparkles className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="font-serif text-2xl mb-3 text-foreground">账号运营</h3>
+                <h3 className="font-serif text-2xl mb-3 text-foreground">内容运营</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">小红书运营 · 爆款内容 · 公众号策划</p>
               </div>
             </Link>
@@ -91,8 +91,8 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/50 to-accent/20" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <Palette className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="font-serif text-2xl mb-3 text-foreground">IP设计</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Logo设计 · 角色设计 · 表情包</p>
+                <h3 className="font-serif text-2xl mb-3 text-foreground">IP创作</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">角色设计 · 品牌IP · 视觉延展</p>
               </div>
             </Link>
 
@@ -105,8 +105,8 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-muted to-secondary/30" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <PenTool className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="font-serif text-2xl mb-3 text-foreground">设计作品</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">海报设计 · 摄影作品 · 绘画原画</p>
+                <h3 className="font-serif text-2xl mb-3 text-foreground">视觉设计</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">平面 · 插画 · 摄影</p>
               </div>
             </Link>
           </div>
