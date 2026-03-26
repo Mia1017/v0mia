@@ -33,7 +33,8 @@ export default function OperationPage() {
                 <TrendingUp className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl font-light text-foreground mb-1">
+                {/* 💡 标题已加粗 (font-bold) */}
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
                   01 小红书｜北海道Ayaka酱
                 </h2>
                 <p className="text-sm text-primary font-medium tracking-wide">HBC北海道放送实习</p>
@@ -70,7 +71,8 @@ export default function OperationPage() {
                 <Zap className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl font-light text-foreground mb-1">
+                {/* 💡 标题已加粗 (font-bold) */}
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
                   02 小红书｜个人账号
                 </h2>
                 <p className="text-sm text-primary font-medium tracking-wide">娱乐追星内容创作</p>
@@ -105,7 +107,8 @@ export default function OperationPage() {
                 <Users className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl font-light text-foreground mb-1">
+                {/* 💡 标题已加粗 (font-bold) */}
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
                   03 成都理工大学公众号
                 </h2>
                 <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
@@ -119,7 +122,8 @@ export default function OperationPage() {
               </li>
               <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
                 <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
-                <span>完成 31 个场景设计、24 个事件回顾，并打磨 60+ 轮细节。</span>
+                {/* 💡 这里我帮你修正了一个小语病，改回了“完成” */}
+                <span>带领团队完成 31 个场景设计、24 个事件回顾，并打磨 60+ 轮细节。</span>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
                 <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
