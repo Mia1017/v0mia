@@ -2,7 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-// 确保导入了所有使用的图标
+// 确保导入所有图标，修复之前的 ReferenceError
 import { Award, Star, Smile, Palette, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -30,7 +30,7 @@ export default function IPDesignPage() {
           
           {/* 01 成都理工大学体育学院 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
-            {/* 文字描述部分 - 居中 */}
+            {/* 文字描述部分 */}
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 shadow-inner">
@@ -40,7 +40,7 @@ export default function IPDesignPage() {
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
                     成都理工大学体育学院
                   </h2>
-                  <p className="text-sm text-primary font-medium tracking-wide italic decoration-primary/30">品牌形象与吉祥物设计</p>
+                  <p className="text-sm text-primary font-medium tracking-wide italic">品牌形象与吉祥物设计</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -52,7 +52,7 @@ export default function IPDesignPage() {
             {/* 图片展示区 - 垂直单列布局 */}
             <div className="space-y-12 flex flex-col items-center">
               
-              {/* 1. Logo - 圆形、居中、塞满并精准偏移 */}
+              {/* 1. Logo - 已修复语法错误，保留右移 2mm 效果 */}
               <div className="w-full flex flex-col items-center gap-6">
                 <Link 
                   href="https://mp.weixin.qq.com/s/kjHRJwrk5teJv_ApwJPC_w" 
@@ -63,7 +63,6 @@ export default function IPDesignPage() {
                     <img 
                       src="/v0-designer-brand-tk/logo0.png" 
                       alt="体育学院圆形Logo" 
-                      {/* 关键修改：添加 translate-x-[2mm] 实现图片在容器内右移 2mm */}
                       className="w-full h-full object-cover object-center translate-x-[2mm]" 
                     />
                   </div>
@@ -76,7 +75,7 @@ export default function IPDesignPage() {
                 </h3>
               </div>
 
-              {/* 2. 展示图 zhanshi.jpg */}
+              {/* 2. 展示图 */}
               <div className="w-full">
                 <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                   <img 
@@ -87,7 +86,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
 
-              {/* 3. IP角色 xt.jpg */}
+              {/* 3. IP角色 */}
               <div className="w-full flex flex-col items-center gap-6 pt-6 border-t border-border/60">
                 <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                   <img 
@@ -105,7 +104,64 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-primary/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 其他板块逻辑同上... */}
+          {/* 02 时尚芭莎获奖作品 */}
+          <div className="bg-card rounded-2xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
+            <div className="flex flex-col md:flex-row gap-10 items-start">
+              <div className="flex-1 space-y-4">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                    <Award className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                      时尚芭莎获奖作品
+                    </h2>
+                    <p className="text-sm text-accent font-medium tracking-wide italic">莎莎IP设计 · 荣誉奖项</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  作品「莎莎」荣获大赛奖项。设计融合时尚元素与艺术感，展现了极强的视觉表现力。
+                </p>
+              </div>
+              <div className="w-full md:w-2/5 shrink-0">
+                <div className="aspect-video relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
+                  <Image 
+                    src="/v0-designer-brand-tk/bazaar.jpg" 
+                    alt="时尚芭莎获奖作品" 
+                    fill 
+                    className="object-contain" 
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 03 成都理工大学官方IP栗子 */}
+          <div className="bg-card rounded-2xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <Smile className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                  成都理工大学官方IP
+                </h2>
+                <p className="text-sm text-primary font-medium tracking-wide italic">栗子表情包 · 系列插图</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[1, 2, 3, 4].map((num) => (
+                <div key={num} className="aspect-square relative rounded-xl overflow-hidden border border-border bg-white shadow-sm p-1">
+                  <Image 
+                    src={`/v0-designer-brand-tk/lizi${num}.png`} 
+                    alt={`栗子表情包 ${num}`} 
+                    fill 
+                    className="object-contain" 
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
         </div>
       </section>
