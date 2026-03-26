@@ -65,17 +65,22 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 账号运营 */}
             <Link href="/operation" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20" />
+              <img 
+                src="/operation-bg.jpg" 
+                alt="账号运营背景" 
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Sparkles className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Sparkles className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-foreground">账号运营</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-white">账号运营</h3>
+                <p className="text-sm text-white/80 leading-relaxed">
                   小红书运营 · 爆款内容 · 公众号策划
                 </p>
                 <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
+                  <span className="text-white text-sm flex items-center gap-1">
                     查看详情 <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
