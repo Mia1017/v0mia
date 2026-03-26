@@ -44,13 +44,13 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">爆款内容</span>
             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">网感热点</span>
-            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">IP设计</span>
+            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">IP创作</span>
             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">视觉创意</span>
           </div>
           
           <Link href="/about">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base tracking-wider">
-              了解更多
+              查看简历
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
