@@ -25,19 +25,19 @@ export function Navigation() {
               href="/operation"
               className="text-sm tracking-wider uppercase text-foreground/70 hover:text-foreground transition-colors"
             >
-              账号运营
+              内容运营
             </Link>
             <Link
               href="/ip-design"
               className="text-sm tracking-wider uppercase text-foreground/70 hover:text-foreground transition-colors"
             >
-              IP设计
+              IP创作
             </Link>
             <Link
               href="/design"
               className="text-sm tracking-wider uppercase text-foreground/70 hover:text-foreground transition-colors"
             >
-              设计作品
+              视觉设计
             </Link>
             <Link
               href="/about"
@@ -75,21 +75,21 @@ export function Navigation() {
               className="block text-base tracking-wider uppercase text-foreground/70 hover:text-foreground transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              账号运营
+              内容运营
             </Link>
             <Link
               href="/ip-design"
               className="block text-base tracking-wider uppercase text-foreground/70 hover:text-foreground transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              IP设计
+              IP创作
             </Link>
             <Link
               href="/design"
               className="block text-base tracking-wider uppercase text-foreground/70 hover:text-foreground transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              设计作品
+              视觉设计
             </Link>
             <Link
               href="/about"
