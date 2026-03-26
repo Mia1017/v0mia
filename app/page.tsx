@@ -68,45 +68,46 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* 账号运营 - 保持原样，等待你的新图 */}
+            {/* 账号运营 */}
             <Link href="/operation" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg border border-border/50">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <Sparkles className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="font-serif text-2xl mb-3 text-foreground">账号运营</h3>
-                <p className="text-sm text-muted-foreground">小红书运营 · 爆款内容 · 公众号策划</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">小红书运营 · 爆款内容 · 公众号策划</p>
               </div>
             </Link>
 
-            {/* IP设计 - 已注入 ip.jpg (40% 透明度) */}
+            {/* IP设计 - 修复居中 */}
             <Link href="/ip-design" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg border border-border/50">
               <div 
                 className="absolute inset-0 bg-cover bg-center opacity-40 transition-transform duration-500 group-hover:scale-110" 
                 style={{ backgroundImage: 'url(/v0-designer-brand-tk/ip.jpg)' }} 
               />
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/50 to-accent/20" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center relative z-10">
+              {/* 💡 关键修复：确保 absolute inset-0 且 flex 居中 */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <Palette className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="font-serif text-2xl mb-3 text-foreground">IP设计</h3>
-                <p className="text-sm text-muted-foreground">Logo设计 · 角色设计 · 表情包</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Logo设计 · 角色设计 · 表情包</p>
               </div>
             </Link>
 
-            {/* 设计作品 - 已注入 sheji.jpg (40% 透明度) */}
+            {/* 设计作品 - 修复居中 */}
             <Link href="/design" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg border border-border/50">
               <div 
                 className="absolute inset-0 bg-cover bg-center opacity-40 transition-transform duration-500 group-hover:scale-110" 
                 style={{ backgroundImage: 'url(/v0-designer-brand-tk/sheji.jpg)' }} 
               />
               <div className="absolute inset-0 bg-gradient-to-br from-muted to-secondary/30" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center relative z-10">
+              {/* 💡 关键修复：确保 absolute inset-0 且 flex 居中 */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <PenTool className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="font-serif text-2xl mb-3 text-foreground">设计作品</h3>
-                <p className="text-sm text-muted-foreground">海报设计 · 摄影作品 · 绘画原画</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">海报设计 · 摄影作品 · 绘画原画</p>
               </div>
             </Link>
           </div>
-        </div>
       </section>
 
       {/* Highlights */}
