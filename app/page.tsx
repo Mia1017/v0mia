@@ -68,20 +68,22 @@ export default function HomePage() {
               <img 
                 src="/operation-bg.jpg" 
                 alt="账号运营背景" 
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Sparkles className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-foreground">账号运营</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  小红书运营 · 爆款内容 · 公众号策划
-                </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
-                    查看详情 <ArrowRight className="w-4 h-4" />
-                  </span>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                  <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <Sparkles className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium mb-2 text-foreground">账号运营</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    小红书运营 · 爆款内容 · 公众号策划
+                  </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-primary text-sm flex items-center justify-center gap-1">
+                      查看详情 <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -91,20 +93,22 @@ export default function HomePage() {
               <img 
                 src="/ip-design-bg.jpg" 
                 alt="IP设计背景" 
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Palette className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-foreground">IP设计</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Logo设计 · 角色设计 · 表情包
-                </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
-                    查看详情 <ArrowRight className="w-4 h-4" />
-                  </span>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                  <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <Palette className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium mb-2 text-foreground">IP设计</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Logo设计 · 角色设计 · 表情包
+                  </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-primary text-sm flex items-center justify-center gap-1">
+                      查看详情 <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -113,17 +117,19 @@ export default function HomePage() {
             <Link href="/design" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg">
               <div className="absolute inset-0 bg-gradient-to-br from-muted to-secondary/30" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <PenTool className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-foreground">设计作品</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  海报设计 · 摄影作品 · 绘画原画
-                </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-primary text-sm flex items-center gap-1">
-                    查看详情 <ArrowRight className="w-4 h-4" />
-                  </span>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                  <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <PenTool className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium mb-2 text-foreground">设计作品</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    海报设计 · 摄影作品 · 绘画原画
+                  </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-primary text-sm flex items-center justify-center gap-1">
+                      查看详情 <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
                 </div>
               </div>
             </Link>
