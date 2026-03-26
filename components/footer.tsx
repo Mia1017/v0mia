@@ -1,70 +1,60 @@
 import Link from "next/link"
+import { Mail } from "lucide-react"
 
 export function Footer() {
   return (
     <footer className="bg-muted/30 border-t border-border mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div>
             <Link href="/" className="inline-block mb-4">
-              <span className="font-serif text-2xl font-light tracking-wide text-foreground">Serene Atelier</span>
+              <span className="font-serif text-2xl font-light tracking-wide text-foreground">Portfolio</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
-              Mindfully crafted clothing that honors both style and sustainability. Each piece is designed to be
-              timeless, versatile, and kind to our planet.
+              运营 · IP设计 · 视觉创作
             </p>
           </div>
 
-          {/* Shop */}
+          {/* Navigation */}
           <div>
-            <h3 className="text-sm font-medium tracking-wider uppercase mb-4">Shop</h3>
+            <h3 className="text-sm font-medium tracking-wider uppercase mb-4">作品集</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/shop" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  All Products
+                <Link href="/operation" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  账号运营
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/collections"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Collections
+                <Link href="/ip-design" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  IP设计
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/lookbook"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Lookbook
+                <Link href="/design" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  设计作品
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* About */}
+          {/* Contact */}
           <div>
-            <h3 className="text-sm font-medium tracking-wider uppercase mb-4">About</h3>
+            <h3 className="text-sm font-medium tracking-wider uppercase mb-4">联系方式</h3>
             <ul className="space-y-3">
               <li>
                 <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Our Story
+                  关于我
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/about#sustainability"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                <a 
+                  href="mailto:your-email@example.com" 
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
                 >
-                  Sustainability
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Contact
-                </Link>
+                  <Mail className="w-4 h-4" />
+                  发送邮件
+                </a>
               </li>
             </ul>
           </div>
@@ -72,16 +62,8 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Serene Atelier. All rights reserved.
+            © {new Date().getFullYear()} Portfolio. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
