@@ -1,11 +1,13 @@
+"use client"
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { ExternalLink, TrendingUp, Users, Zap } from "lucide-react"
+import { TrendingUp, Users, Zap, CheckCircle2 } from "lucide-react"
 import { ImagePlaceholder } from "@/components/image-placeholder"
 
 export default function OperationPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero */}
@@ -15,91 +17,119 @@ export default function OperationPage() {
             账号运营
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            爆款内容 · 网感热点 · 冲浪达人
+            爆款内容 · 网感热点 · 视觉叙事
           </p>
         </div>
       </section>
 
       {/* Experience Cards */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="max-w-5xl mx-auto space-y-12">
           
-          {/* 小红书实习 */}
-          <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
+          {/* 01 小红书｜北海道Ayaka酱 */}
+          <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <TrendingUp className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <TrendingUp className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl font-light text-foreground mb-2">
+                <h2 className="font-serif text-2xl font-light text-foreground mb-1">
                   01 小红书｜北海道Ayaka酱
                 </h2>
-                <p className="text-sm text-muted-foreground">HBC北海道放送实习</p>
+                <p className="text-sm text-primary font-medium tracking-wide">HBC北海道放送实习</p>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              运营官方小红书账号，发布 20+ 篇北海道观光笔记。
-              执行 10+ 家店铺／景点取材，完成沟通、拍摄与内容制作。
-              参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。
-            </p>
+            
+            {/* 提行效果实现：使用 ul 列表 */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>运营官方小红书账号，发布 20+ 篇北海道观光笔记。</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>执行 10+ 家店铺／景点取材，完成沟通、拍摄与内容制作。</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。</span>
+              </li>
+            </ul>
+
             <ImagePlaceholder
               icon={TrendingUp}
-              text="小红书运营作品"
+              text="HBC实习作品集锦"
               aspectRatio="aspect-video"
             />
           </div>
 
-          {/* 个人账号 */}
-          <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
+          {/* 02 小红书｜个人账号 */}
+          <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <Zap className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <Zap className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl font-light text-foreground mb-2">
-                  个人小红书账号
+                <h2 className="font-serif text-2xl font-light text-foreground mb-1">
+                  02 小红书｜个人账号
                 </h2>
-                <p className="text-sm text-muted-foreground">娱乐追星类笔记千赞</p>
+                <p className="text-sm text-primary font-medium tracking-wide">娱乐追星内容创作</p>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              运营个人娱乐追星类账号，善于捕捉热点话题，创作具有网感的内容。
-              多篇笔记获得千赞以上互动，积累了丰富的内容创作和社区运营经验。
-            </p>
+            
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>产出千赞笔记 15+ 篇，累计获赞 58,000+。</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>在选题、标题与平台表达节奏上形成敏锐判断力。</span>
+              </li>
+            </ul>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <ImagePlaceholder
-                icon={Zap}
-                text="个人笔记作品 1"
-                aspectRatio="aspect-[4/5]"
-              />
-              <ImagePlaceholder
-                icon={Zap}
-                text="个人笔记作品 2"
-                aspectRatio="aspect-[4/5]"
-              />
+              <ImagePlaceholder icon={Zap} text="千赞笔记案例 1" aspectRatio="aspect-[4/5]" />
+              <ImagePlaceholder icon={Zap} text="千赞笔记案例 2" aspectRatio="aspect-[4/5]" />
             </div>
           </div>
 
-          {/* 公众号策划 */}
-          <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
+          {/* 03 成都理工大学公众号 */}
+          <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
             <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <Users className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <Users className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h2 className="font-serif text-2xl font-light text-foreground mb-2">
-                  成都理工大学公众号策划
+                <h2 className="font-serif text-2xl font-light text-foreground mb-1">
+                  03 成都理工大学公众号
                 </h2>
-                <p className="text-sm text-muted-foreground">毕业季长图推送</p>
+                <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              参与成都理工大学官方公众号内容策划，负责毕业季专题长图推送的创意策划与设计执行。
-              作品获得校内师生广泛好评与转发。
-            </p>
+            
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>主导学校官方毕业季内容策划，统筹场景设计、事件梳理与文案表达。</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>完成 31 个场景设计、24 个事件回顾，并打磨 60+ 轮细节。</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                <span>最终阅读量达 1.6 万+，成为历届毕业季中热度最高的作品。</span>
+              </li>
+            </ul>
+
             <ImagePlaceholder
               icon={Users}
-              text="毕业季长图推送"
+              text="毕业季专题长图呈现"
               aspectRatio="aspect-[16/9]"
             />
           </div>
@@ -110,15 +140,13 @@ export default function OperationPage() {
       {/* Skills */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl font-light text-foreground mb-8">运营技能</h2>
+          <h2 className="font-serif text-3xl font-light text-foreground mb-8">运营核心能力</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">内容策划</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">数据分析</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">热点追踪</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">用户运营</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">社群管理</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">小红书</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">微信公众号</span>
+            {["内容策划", "爆款拆解", "热点追踪", "视觉审美", "数据洞察", "小红书运营", "全案统筹"].map(skill => (
+              <span key={skill} className="px-5 py-2 bg-background text-foreground rounded-full text-sm border border-border shadow-sm">
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       </section>
