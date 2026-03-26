@@ -147,23 +147,18 @@ export default function OperationPage() {
               
               <div className="w-full lg:flex-1">
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
-                  {/* 左侧：yangjiji.png 效果图 - 保持现状，不修改 */}
+                  {/* 左侧：yangjiji.png 效果图 */}
                   <div className="w-[220px] h-[380px] relative rounded-2xl overflow-hidden drop-shadow-xl shrink-0">
                     <Image src="/v0-designer-brand-tk/yangjiji.png" alt="效果图展示" fill className="object-contain" />
                   </div>
                   
-                  {/* 右侧：biye.jpg 封面图 + 跳转链接 - 适度等比例放大，且层级覆盖在png之上 */}
+                  {/* 右侧：biye.jpg 封面图 + 跳转链接 - 保持原尺寸比例，放大一倍 */}
                   <Link 
                     href="https://mp.weixin.qq.com/s/VVMjfiyVM_RZ6SGPZ_FLAw" 
                     target="_blank" 
-                    // 1. 移除了 w-full，只在 sm 以上设最大宽度
-                    // 2. 将 max-w-[320px] 放大为 max-w-[420px]
-                    // 3. 添加 z-10 确保在覆盖 png 时，它在上面显示
-                    className="relative sm:max-w-[420px] z-10 rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
+                    className="w-full sm:max-w-[640px] relative rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
                   >
-                    {/* 这个外层 div 用于保持图片自适应，不改动 */}
                     <div className="w-full h-full">
-                      {/* 这里放图片，w-full h-auto 自动适配比例，不改动 */}
                       <img src="/v0-designer-brand-tk/biye.jpg" alt="文章封面图" className="w-full h-auto block" />
                     </div>
                     <div className="absolute inset-0 bg-black/0 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
