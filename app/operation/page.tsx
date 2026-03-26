@@ -32,14 +32,15 @@ export default function OperationPage() {
               </div>
               <div>
                 <h2 className="font-serif text-2xl font-light text-foreground mb-2">
-                  小红书账号运营实习
+                  01 小红书｜北海道Ayaka酱
                 </h2>
-                <p className="text-sm text-muted-foreground">北海道Ayaka酱</p>
+                <p className="text-sm text-muted-foreground">HBC北海道放送实习</p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              负责小红书账号的日常运营，包括内容策划、发布排期、数据分析及用户互动。
-              深入了解小红书平台规则和算法，掌握爆款内容创作技巧。
+              运营官方小红书账号，发布 20+ 篇北海道观光笔记。
+              执行 10+ 家店铺／景点取材，完成沟通、拍摄与内容制作。
+              参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。
             </p>
             <ImagePlaceholder
               icon={TrendingUp}
