@@ -12,7 +12,7 @@ export default function OperationPage() {
   const ayakaNotes = [
     { name: "meirenyu.jpg", link: "http://xhslink.com/o/7TIILUPPVPk", label: "笔记" },
     { name: "pijiu.jpg", link: "http://xhslink.com/o/8ipjoEMayVb", label: "笔记" },
-    { name: "haixian.jpg", link: "http://xhslink.com/o/71pgMqLgKTl", label: "爆款" },
+    { name: "haixian.jpg", link: "http://xhslink.com/o/71pgMqLgKTl", label: "笔记" }, // label从爆款改为了笔记
   ]
 
   return (
@@ -73,25 +73,24 @@ export default function OperationPage() {
               <div className="w-full lg:flex-1">
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
                   
-                  {/* 个人主页截图 - 修正 object-contain 确保底部完整显示 */}
+                  {/* 个人主页截图 - 已删除“个人主页”文字提示 */}
                   <Link 
                     href="https://xhslink.com/m/3SDaawO9bWr" 
                     target="_blank" 
-                    className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all group/profile bg-white"
+                    className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all group/profile bg-white overflow-hidden"
                   >
                     <Image 
                       src="/v0-designer-brand-tk/zhuye.jpg" 
                       alt="Ayaka酱个人主页"
                       fill
-                      className="object-contain p-1" // 确保图片不被切掉边缘
+                      className="object-contain p-1"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center rounded-2xl">
                       <ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" />
                     </div>
-                    <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-white/90 bg-black/30 px-2 py-0.5 rounded backdrop-blur-sm z-20">个人主页</span>
                   </Link>
 
-                  {/* 堆叠的笔记截图 - 修正为 object-contain 且增加阴影 */}
+                  {/* 堆叠的笔记截图 - 已删除“爆款”文字提示 */}
                   <div className="w-[240px] h-[400px] relative mt-8 sm:mt-0">
                     {ayakaNotes.map((note, index) => (
                       <Link 
@@ -106,21 +105,16 @@ export default function OperationPage() {
                           zIndex: index + 10,
                         }}
                       >
-                        <div className="w-[180px] h-[320px] relative rounded-xl border-2 border-white shadow-2xl cursor-pointer bg-white">
+                        <div className="w-[180px] h-[320px] relative rounded-xl border-2 border-white shadow-2xl cursor-pointer bg-white overflow-hidden">
                           <Image 
                             src={`/v0-designer-brand-tk/${note.name}`} 
                             alt={note.label}
                             fill
-                            className="object-contain p-0.5" // 关键：确保底部点赞收藏可见
+                            className="object-contain p-0.5"
                           />
                           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center z-10 rounded-xl">
                             <ExternalLink className="w-8 h-8 text-white/80" />
                           </div>
-                          {index === 2 && (
-                            <span className="absolute top-2 right-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full z-20 shadow-lg font-bold">
-                              爆款
-                            </span>
-                          )}
                         </div>
                       </Link>
                     ))}
