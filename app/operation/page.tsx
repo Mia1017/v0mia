@@ -29,7 +29,7 @@ export default function OperationPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">账号运营</h1>
+          <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">内容运营</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">爆款内容 · 网感热点 · 视觉叙事</p>
         </div>
       </section>
@@ -93,7 +93,7 @@ export default function OperationPage() {
                 </div>
                 <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记15+篇，累计获赞58,000+。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记 15+篇，累计获赞 58,000+。</span></li>
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>在选题、标题与平台表达节奏上形成敏锐判断力。</span></li>
                 </ul>
               </div>
@@ -135,11 +135,11 @@ export default function OperationPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
-                    <span>完成 31 个场景设计、24 个事件回顾，并打磨 60+ 轮细节。</span>
+                    <span>完成 31个场景设计、24个事件回顾，并打磨60+轮细节。</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
-                    <span>最终阅读量达 1.6 万+，成为历届毕业季中热度最高的作品。</span>
+                    <span>最终阅读量达 1.6万+，成为历届毕业季中热度最高的作品。</span>
                   </li>
                 </ul>
               </div>
@@ -170,6 +170,31 @@ export default function OperationPage() {
           </div>
         </div>
       </section>
+
+      {/* 返回主页按钮 - 放置在内容与页脚之间 */}
+      <div className="py-12 flex justify-center">
+        <Link 
+          href="/" 
+          className="group flex items-center gap-2 px-8 py-3 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1"
+        >
+          <span className="font-medium">返回主页</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="group-hover:translate-x-1 transition-transform"
+          >
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </Link>
+      </div>
+
       <Footer />
     </div>
   )
