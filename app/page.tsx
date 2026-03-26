@@ -88,9 +88,13 @@ export default function HomePage() {
 
             {/* IP设计 */}
             <Link href="/ip-design" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/50 to-accent/20" />
+              <img 
+                src="/ip-design-bg.jpg" 
+                alt="IP设计背景" 
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+              />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Palette className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-serif text-2xl md:text-3xl font-light mb-3 text-foreground">IP设计</h3>
