@@ -28,7 +28,7 @@ export default function IPDesignPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-16">
           
-          {/* 01 成都理工大学体育学院 - 精准修改留白部分 */}
+          {/* 01 成都理工大学体育学院 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
             {/* 文字描述部分 - 居中 */}
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
@@ -52,34 +52,31 @@ export default function IPDesignPage() {
             {/* 图片展示区 - 垂直单列布局 */}
             <div className="space-y-12 flex flex-col items-center">
               
-              {/* 1. Logo - 圆形、居中、完美的塞满圆圈、带跳转链接 */}
+              {/* 1. Logo - 圆形、居中、塞满并精准偏移 */}
               <div className="w-full flex flex-col items-center gap-6">
                 <Link 
                   href="https://mp.weixin.qq.com/s/kjHRJwrk5teJv_ApwJPC_w" 
                   target="_blank"
                   className="relative group/logo drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.03]"
                 >
-                  {/* 使用 ring 和 shadow 装饰圆形 Logo，确保 rounded-full */}
                   <div className="w-[180px] h-[180px] rounded-full overflow-hidden border-2 border-primary/20 bg-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] ring-4 ring-primary/5">
-                    {/* 精准修改点：将 object-contain 改为 object-cover 塞满圆圈，object-center 完美的居中 */}
                     <img 
                       src="/v0-designer-brand-tk/logo0.png" 
                       alt="体育学院圆形Logo" 
-                      className="w-full h-full object-cover object-center" 
+                      {/* 关键修改：添加 translate-x-[2mm] 实现图片在容器内右移 2mm */}
+                      className="w-full h-full object-cover object-center translate-x-[2mm]" 
                     />
                   </div>
-                  {/* 点击跳转引导标签 */}
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/logo:opacity-100 rounded-full transition-opacity flex items-center justify-center z-20">
                     <ExternalLink className="w-8 h-8 text-white/90" />
                   </div>
                 </Link>
-                {/* 标题 */}
                 <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
                   Logo设计
                 </h3>
               </div>
 
-              {/* 2. 展示图 zhanshi.jpg - 全宽展示 */}
+              {/* 2. 展示图 zhanshi.jpg */}
               <div className="w-full">
                 <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                   <img 
@@ -90,7 +87,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
 
-              {/* 3. IP角色 xt.jpg - 全宽展示 */}
+              {/* 3. IP角色 xt.jpg */}
               <div className="w-full flex flex-col items-center gap-6 pt-6 border-t border-border/60">
                 <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                   <img 
@@ -105,14 +102,10 @@ export default function IPDesignPage() {
               </div>
             </div>
             
-            {/* 装饰物：体院项目特有的发光效果 */}
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-primary/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 其他板块保持之前整合好的样子... */}
-          
-          {/* 02 时尚芭莎获奖作品 */}
-          {/* 03 成都理工大学官方IP栗子 */}
+          {/* 其他板块逻辑同上... */}
 
         </div>
       </section>
@@ -128,7 +121,6 @@ export default function IPDesignPage() {
               </span>
             ))}
           </div>
-          {/* 装饰物：技能区底部的发光效果 */}
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-accent/20 blur-[60px] -z-10"></div>
         </div>
       </section>
