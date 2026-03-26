@@ -52,7 +52,7 @@ export default function IPDesignPage() {
             {/* 图片展示区 - 垂直单列布局 */}
             <div className="space-y-12 flex flex-col items-center">
               
-              {/* 1. Logo - 已修复语法错误，保留右移 2mm 效果 */}
+              {/* 1. Logo - 已将偏移量从 2mm 调整为 1mm，确保视觉居中 */}
               <div className="w-full flex flex-col items-center gap-6">
                 <Link 
                   href="https://mp.weixin.qq.com/s/kjHRJwrk5teJv_ApwJPC_w" 
@@ -63,7 +63,7 @@ export default function IPDesignPage() {
                     <img 
                       src="/v0-designer-brand-tk/logo0.png" 
                       alt="体育学院圆形Logo" 
-                      className="w-full h-full object-cover object-center translate-x-[2mm]" 
+                      className="w-full h-full object-cover object-center translate-x-[1mm]" 
                     />
                   </div>
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/logo:opacity-100 rounded-full transition-opacity flex items-center justify-center z-20">
@@ -120,7 +120,7 @@ export default function IPDesignPage() {
                   </div>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  作品「莎莎」荣获大赛奖项。设计融合时尚元素与艺术感，展现了极强的视觉表现力。
+                  作品「莎莎」荣获时尚芭莎IP设计大赛奖项。设计将时尚感与角色趣味性完美结合。
                 </p>
               </div>
               <div className="w-full md:w-2/5 shrink-0">
