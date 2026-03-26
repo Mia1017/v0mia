@@ -13,13 +13,17 @@ export default function OperationPage() {
     { name: "haixian.jpg", link: "http://xhslink.com/o/71pgMqLgKTl" },
   ]
 
+  // 个人笔记排序说明：
+  // 第一列：shushu, yjh
+  // 中间列：doubin (上), labi (下)
+  // 右侧列：kawaii (上), nvwang (下)
   const personalNotes = [
     { name: "shushu.jpg", link: "http://xhslink.com/o/45hArIYd8dB" },
     { name: "yjh.jpg", link: "http://xhslink.com/o/14V7XTFrRGZ" },
-    { name: "nvwang.jpg", link: "http://xhslink.com/o/O3AhjdP8pH" },
-    { name: "doubin.jpg", link: "http://xhslink.com/o/8i7W9hCCF4M" },
-    { name: "kawaii.jpg", link: "http://xhslink.com/o/8IWTYDutPT7" },
-    { name: "labi.jpg", link: "http://xhslink.com/o/82UnWa2Fwa9" },
+    { name: "doubin.jpg", link: "http://xhslink.com/o/8i7W9hCCF4M" }, // 中间上
+    { name: "labi.jpg", link: "http://xhslink.com/o/82UnWa2Fwa9" },   // 中间下
+    { name: "kawaii.jpg", link: "http://xhslink.com/o/8IWTYDutPT7" }, // 右边上
+    { name: "nvwang.jpg", link: "http://xhslink.com/o/O3AhjdP8pH" },  // 右边下
   ]
 
   return (
@@ -51,8 +55,8 @@ export default function OperationPage() {
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布20+篇北海道观光笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行10+家店铺取材，完成沟通、拍摄与内容制作。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布 20+ 篇北海道观光笔记。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行 10+ 家店铺取材，完成沟通、拍摄与内容制作。</span></li>
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>参与企划、剪辑与视觉设计，协助建立风格体系。</span></li>
                 </ul>
               </div>
@@ -61,7 +65,7 @@ export default function OperationPage() {
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
                   <Link href="https://xhslink.com/m/3SDaawO9bWr" target="_blank" className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all bg-white overflow-hidden group/profile">
                     <Image src="/v0-designer-brand-tk/zhuye.jpg" alt="主页" fill className="object-contain p-1" />
-                    <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center"><ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" /></div>
+                    <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center rounded-2xl"><ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" /></div>
                   </Link>
                   <div className="w-[240px] h-[400px] relative mt-8 sm:mt-0">
                     {ayakaNotes.map((note, index) => (
@@ -78,7 +82,7 @@ export default function OperationPage() {
             </div>
           </div>
 
-          {/* 02 小红书｜个人账号 - 三列布局优化版 */}
+          {/* 02 小红书｜个人账号 - 精确排序三列版 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
               
@@ -94,14 +98,14 @@ export default function OperationPage() {
                 </div>
                 <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记15+篇，累计获赞58,000+。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记 15+ 篇，累计获赞 58,000+。</span></li>
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>在选题、标题与平台表达节奏上形成敏锐判断力。</span></li>
                 </ul>
               </div>
 
-              {/* 右侧：三列布局，横向平铺，缩短高度 */}
+              {/* 右侧：三列紧凑瀑布流 */}
               <div className="w-full lg:flex-1 flex justify-center lg:justify-end">
-                <div className="columns-2 sm:columns-3 gap-3 max-w-[520px]"> {/* 增加列数至3，限制总宽度保持紧凑 */}
+                <div className="columns-2 sm:columns-3 gap-3 max-w-[520px]">
                   {personalNotes.map((note, index) => (
                     <Link 
                       key={index} 
@@ -110,13 +114,12 @@ export default function OperationPage() {
                       className="block mb-3 break-inside-avoid group/item transition-transform hover:scale-[1.03]"
                     >
                       <div className="relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
-                        {/* 使用原生 img + h-auto 自动适配图片比例，杜绝留白 */}
                         <img 
                           src={`/v0-designer-brand-tk/${note.name}`} 
-                          alt="笔记" 
+                          alt="笔记案例" 
                           className="w-full h-auto object-contain block p-0.5" 
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/15 transition-colors flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/15 transition-colors flex items-center justify-center rounded-xl">
                           <ExternalLink className="text-white opacity-0 group-hover/item:opacity-100 transition-opacity w-5 h-5" />
                         </div>
                       </div>
