@@ -51,9 +51,9 @@ export default function OperationPage() {
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布 20+ 篇北海道观光笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行 10+ 家店铺取材，完成沟通、拍摄与内容制作。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>参与企划、剪辑与视觉设计，协助建立风格体系。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布20+篇北海道观光笔记。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行10+家店铺／景点取材，完成沟通、拍摄与内容制作。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。</span></li>
                 </ul>
               </div>
 
@@ -93,7 +93,7 @@ export default function OperationPage() {
                 </div>
                 <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记 15+ 篇，累计获赞 58,000+。</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记15+篇，累计获赞58,000+。</span></li>
                   <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>在选题、标题与平台表达节奏上形成敏锐判断力。</span></li>
                 </ul>
               </div>
@@ -115,10 +115,10 @@ export default function OperationPage() {
             </div>
           </div>
 
-          {/* 03 微信公众号项目 - 已完整还原内容 */}
+          {/* 03 微信公众号项目 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-lg transition-all duration-300">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
-              <div className="flex-1 lg:max-w-xl">
+              <div className="flex-1 lg:max-w-md">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Users className="w-6 h-6 text-primary" />
@@ -137,14 +137,31 @@ export default function OperationPage() {
                     <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
                     <span>完成 31 个场景设计、24 个事件回顾，并打磨 60+ 轮细节。</span>
                   </li>
-                  <li className="flex items-start gap-3 border-l-2 border-primary/20 pl-4 py-1 bg-primary/5">
-                    <span className="font-medium text-foreground">最终阅读量达 1.6 万+，成为历届毕业季中热度最高的作品。</span>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
+                    <span>最终阅读量达 1.6 万+，成为历届毕业季中热度最高的作品。</span>
                   </li>
                 </ul>
               </div>
+              
               <div className="w-full lg:flex-1">
-                <div className="w-full aspect-[16/9] relative rounded-xl overflow-hidden border border-border bg-white shadow-sm">
-                   <Image src="/v0-designer-brand-tk/wechat-project.jpg" alt="毕业季专题展示" fill className="object-contain" />
+                <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
+                  {/* 左侧：yangjiji.png 效果图 */}
+                  <div className="w-[220px] h-[380px] relative rounded-2xl overflow-hidden drop-shadow-xl">
+                    <Image src="/v0-designer-brand-tk/yangjiji.png" alt="效果图展示" fill className="object-contain" />
+                  </div>
+                  
+                  {/* 右侧：biye.jpg 封面图 + 跳转链接 */}
+                  <Link 
+                    href="https://mp.weixin.qq.com/s/VVMjfiyVM_RZ6SGPZ_FLAw" 
+                    target="_blank" 
+                    className="w-[280px] h-[180px] relative rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
+                  >
+                    <Image src="/v0-designer-brand-tk/biye.jpg" alt="文章封面图" fill className="object-cover" />
+                    <div className="absolute inset-0 bg-black/0 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
+                      <ExternalLink className="text-white opacity-0 group-hover/cover:opacity-100 transition-opacity w-6 h-6" />
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
