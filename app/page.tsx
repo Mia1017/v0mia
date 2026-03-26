@@ -70,6 +70,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 账号运营 */}
             <Link href="/operation" className="group relative aspect-[3/4] overflow-hidden bg-muted rounded-lg border border-border/50">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-40 transition-transform duration-500 group-hover:scale-110" 
+                style={{ backgroundImage: 'url(/v0-designer-brand-tk/duotu.jpg)' }} 
+              />
               <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <Sparkles className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
