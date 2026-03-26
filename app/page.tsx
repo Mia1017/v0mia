@@ -14,20 +14,18 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-muted/40 via-background to-secondary/20" />
         
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-          {/* Avatar */}
+          {/* Avatar - 这里已经修好了嵌套问题 */}
           <div className="mb-8 flex justify-center">
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl bg-white flex items-center justify-center relative">
-  <img 
-    src="/v0-designer-brand-tk/touxiang.jpg" 
-    alt="Mia"
-    className="w-full h-full object-cover"
-    onError={(e) => {
-      // 万一图片路径不对，这里会自动显示一个备用的“作”字，不至于让网页变丑
-      e.currentTarget.style.display = 'none';
-      e.currentTarget.parentElement!.innerHTML = '<div class="text-5xl md:text-6xl font-serif text-primary/60">作</div>';
-    }}
-  />
-</div>
+              <img 
+                src="/v0-designer-brand-tk/touxiang.jpg" 
+                alt="Mia"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<div class="text-5xl md:text-6xl font-serif text-primary/60">作</div>';
+                }}
+              />
             </div>
           </div>
           
