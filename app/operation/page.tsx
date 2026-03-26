@@ -13,17 +13,13 @@ export default function OperationPage() {
     { name: "haixian.jpg", link: "http://xhslink.com/o/71pgMqLgKTl" },
   ]
 
-  // 个人笔记排序说明：
-  // 第一列：shushu, yjh
-  // 中间列：doubin (上), labi (下)
-  // 右侧列：kawaii (上), nvwang (下)
   const personalNotes = [
     { name: "shushu.jpg", link: "http://xhslink.com/o/45hArIYd8dB" },
     { name: "yjh.jpg", link: "http://xhslink.com/o/14V7XTFrRGZ" },
-    { name: "doubin.jpg", link: "http://xhslink.com/o/8i7W9hCCF4M" }, // 中间上
-    { name: "labi.jpg", link: "http://xhslink.com/o/82UnWa2Fwa9" },   // 中间下
-    { name: "kawaii.jpg", link: "http://xhslink.com/o/8IWTYDutPT7" }, // 右边上
-    { name: "nvwang.jpg", link: "http://xhslink.com/o/O3AhjdP8pH" },  // 右边下
+    { name: "doubin.jpg", link: "http://xhslink.com/o/8i7W9hCCF4M" },
+    { name: "labi.jpg", link: "http://xhslink.com/o/82UnWa2Fwa9" },
+    { name: "kawaii.jpg", link: "http://xhslink.com/o/8IWTYDutPT7" },
+    { name: "nvwang.jpg", link: "http://xhslink.com/o/O3AhjdP8pH" },
   ]
 
   return (
@@ -82,10 +78,9 @@ export default function OperationPage() {
             </div>
           </div>
 
-          {/* 02 小红书｜个人账号 - 精确排序三列版 */}
+          {/* 02 小红书｜个人账号 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
-              
               <div className="flex-1 lg:max-w-md">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -103,22 +98,12 @@ export default function OperationPage() {
                 </ul>
               </div>
 
-              {/* 右侧：三列紧凑瀑布流 */}
               <div className="w-full lg:flex-1 flex justify-center lg:justify-end">
                 <div className="columns-2 sm:columns-3 gap-3 max-w-[520px]">
                   {personalNotes.map((note, index) => (
-                    <Link 
-                      key={index} 
-                      href={note.link} 
-                      target="_blank" 
-                      className="block mb-3 break-inside-avoid group/item transition-transform hover:scale-[1.03]"
-                    >
+                    <Link key={index} href={note.link} target="_blank" className="block mb-3 break-inside-avoid group/item transition-transform hover:scale-[1.03]">
                       <div className="relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
-                        <img 
-                          src={`/v0-designer-brand-tk/${note.name}`} 
-                          alt="笔记案例" 
-                          className="w-full h-auto object-contain block p-0.5" 
-                        />
+                        <img src={`/v0-designer-brand-tk/${note.name}`} alt="笔记" className="w-full h-auto object-contain block p-0.5" />
                         <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/15 transition-colors flex items-center justify-center rounded-xl">
                           <ExternalLink className="text-white opacity-0 group-hover/item:opacity-100 transition-opacity w-5 h-5" />
                         </div>
@@ -127,26 +112,41 @@ export default function OperationPage() {
                   ))}
                 </div>
               </div>
-
             </div>
           </div>
 
-          {/* 03 微信公众号项目 */}
-          <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-md transition-shadow">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                <Users className="w-6 h-6 text-primary" />
+          {/* 03 微信公众号项目 - 已完整还原内容 */}
+          <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-lg transition-all duration-300">
+            <div className="flex flex-col lg:flex-row gap-12 items-start">
+              <div className="flex-1 lg:max-w-xl">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">03 微信｜成都理工大学公众号</h2>
+                    <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
+                  </div>
+                </div>
+                <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
+                    <span>主导学校官方毕业季内容策划，统筹场景设计、事件梳理与文案表达。</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
+                    <span>完成 31 个场景设计、24 个事件回顾，并打磨 60+ 轮细节。</span>
+                  </li>
+                  <li className="flex items-start gap-3 border-l-2 border-primary/20 pl-4 py-1 bg-primary/5">
+                    <span className="font-medium text-foreground">最终阅读量达 1.6 万+，成为历届毕业季中热度最高的作品。</span>
+                  </li>
+                </ul>
               </div>
-              <div>
-                <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">03 微信｜成都理工大学公众号</h2>
-                <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
+              <div className="w-full lg:flex-1">
+                <div className="w-full aspect-[16/9] relative rounded-xl overflow-hidden border border-border bg-white shadow-sm">
+                   <Image src="/v0-designer-brand-tk/wechat-project.jpg" alt="毕业季专题展示" fill className="object-contain" />
+                </div>
               </div>
-            </div>
-            <ul className="space-y-3 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-              <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>主导学校官方毕业季内容策划，最终阅读量达 1.6 万+。</span></li>
-            </ul>
-            <div className="w-full aspect-[16/9] relative rounded-xl overflow-hidden border border-border bg-white">
-               <Image src="/v0-designer-brand-tk/wechat-project.jpg" alt="毕业季" fill className="object-contain" />
             </div>
           </div>
         </div>
