@@ -118,13 +118,14 @@ export default function OperationPage() {
           {/* 03 微信公众号项目 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-lg transition-all duration-300">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
-              <div className="flex-1 lg:max-w-md">
+              {/* 这里稍微调大了 max-w-xl 并配合 whitespace-nowrap 解决换行 */}
+              <div className="flex-1 lg:max-w-xl"> 
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Users className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">03 微信｜成都理工大学公众号</h2>
+                  <div className="min-w-0">
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1 whitespace-nowrap">03 微信｜成都理工大学公众号</h2>
                     <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
                   </div>
                 </div>
@@ -147,17 +148,19 @@ export default function OperationPage() {
               <div className="w-full lg:flex-1">
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
                   {/* 左侧：yangjiji.png 效果图 */}
-                  <div className="w-[220px] h-[380px] relative rounded-2xl overflow-hidden drop-shadow-xl">
+                  <div className="w-[220px] h-[380px] relative rounded-2xl overflow-hidden drop-shadow-xl shrink-0">
                     <Image src="/v0-designer-brand-tk/yangjiji.png" alt="效果图展示" fill className="object-contain" />
                   </div>
                   
-                  {/* 右侧：biye.jpg 封面图 + 跳转链接 */}
+                  {/* 右侧：biye.jpg 封面图 + 跳转链接 - 保持原尺寸比例 */}
                   <Link 
                     href="https://mp.weixin.qq.com/s/VVMjfiyVM_RZ6SGPZ_FLAw" 
                     target="_blank" 
-                    className="w-[280px] h-[180px] relative rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
+                    className="w-full sm:max-w-[320px] relative rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
                   >
-                    <Image src="/v0-designer-brand-tk/biye.jpg" alt="文章封面图" fill className="object-cover" />
+                    <div className="w-full h-full">
+                      <img src="/v0-designer-brand-tk/biye.jpg" alt="文章封面图" className="w-full h-auto block" />
+                    </div>
                     <div className="absolute inset-0 bg-black/0 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
                       <ExternalLink className="text-white opacity-0 group-hover/cover:opacity-100 transition-opacity w-6 h-6" />
                     </div>
