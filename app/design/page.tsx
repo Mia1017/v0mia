@@ -1,3 +1,5 @@
+"use client";
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Monitor, Image, Camera, Brush, Play } from "lucide-react"
@@ -41,16 +43,12 @@ export default function DesignPage() {
               负责成都理工大学官方网站首页轮播大图的设计制作，
               结合校园文化与时事热点，呈现学校的多元风采。
             </p>
-            {/* 修改后的图片展示区域 */}
+            {/* 修复后的图片区域：去掉了导致报错的冗余逻辑，保持最简 */}
             <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-border bg-muted">
               <img 
                 src="/qswl.jpg" 
                 alt="官网门户大图作品" 
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<div class="flex items-center justify-center h-full text-muted-foreground">图片 qswl.jpg 尚未上传至 public 文件夹</div>';
-                }}
               />
             </div>
           </div>
