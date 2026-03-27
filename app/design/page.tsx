@@ -10,7 +10,7 @@ export default function DesignPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">
@@ -22,11 +22,11 @@ export default function DesignPage() {
         </div>
       </section>
 
-      {/* Projects */}
+      {/* Projects Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-16">
           
-          {/* 官网门户大图 */}
+          {/* 官网门户大图 - 垂直排列 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -44,19 +44,20 @@ export default function DesignPage() {
               结合校园文化与时事热点，呈现学校的多元风采。
             </p>
             
-            {/* 图片垂直排列区域 */}
-            <div className="flex flex-col gap-6 md:gap-10">
+            {/* 图片垂直展示区域 */}
+            <div className="flex flex-col gap-8 md:gap-12">
               {[
                 { src: "yu.jpg", alt: "官网门户大图-雨" },
-                { src: "hanlu.png", alt: "官网门户大图-寒露" },
+                { src: "hanlu.jpg", alt: "官网门户大图-寒露" },
                 { src: "liqiu.jpg", alt: "官网门户大图-立秋" },
-                { src: "dong.png", alt: "官网门户大图-冬" }
+                { src: "dong.jpg", alt: "官网门户大图-冬" }
               ].map((img, index) => (
-                <div key={index} className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-white group transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                <div key={index} className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-muted group transition-all duration-500 hover:shadow-2xl">
                   <img 
                     src={`/v0-designer-brand-tk/${img.src}`} 
                     alt={img.alt} 
-                    className="w-full h-auto block object-cover"
+                    loading="lazy" // 优化：懒加载，缓解页面卡顿
+                    className="w-full h-auto block object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   />
                 </div>
               ))}
@@ -81,9 +82,9 @@ export default function DesignPage() {
               展现创意思维与视觉表达能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs">海报作品 1</div>
-              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs">海报作品 2</div>
-              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs">海报作品 3</div>
+              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs uppercase tracking-widest">Poster 01</div>
+              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs uppercase tracking-widest">Poster 02</div>
+              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs uppercase tracking-widest">Poster 03</div>
             </div>
           </div>
 
@@ -106,7 +107,9 @@ export default function DesignPage() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {['春', '夏', '秋', '冬'].map((season) => (
-                <div key={season} className="aspect-square bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-xs">{season}</div>
+                <div key={season} className="aspect-square bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-sm font-light">
+                  {season}
+                </div>
               ))}
             </div>
           </div>
@@ -129,12 +132,12 @@ export default function DesignPage() {
               展现数字绘画技巧与创意构思能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-xs">游戏原画作品</div>
-              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-xs">插画创作</div>
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-sm">游戏原画作品</div>
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-sm">插画创作</div>
             </div>
           </div>
 
-          {/* 手术动画尝试 */}
+          {/* 动画作品尝试 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -144,7 +147,7 @@ export default function DesignPage() {
                 <h2 className="font-serif text-2xl font-light text-foreground mb-2">
                   动画作品尝试
                 </h2>
-                <p className="text-sm text-muted-foreground">小红书动画作品</p>
+                <p className="text-sm text-muted-foreground">科普动画</p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -152,20 +155,20 @@ export default function DesignPage() {
               探索动画在内容创作领域的应用可能。
             </p>
             <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border">
-              <Play className="w-8 h-8 text-muted-foreground/30" />
+              <Play className="w-10 h-10 text-muted-foreground/20" />
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Skills Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl font-light text-foreground mb-8">设计技能</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {["Photoshop", "Illustrator", "After Effects", "Procreate", "摄影", "数字绘画", "动画制作"].map((skill) => (
-              <span key={skill} className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">
+              <span key={skill} className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border hover:bg-accent/10 transition-colors cursor-default">
                 {skill}
               </span>
             ))}
@@ -173,17 +176,17 @@ export default function DesignPage() {
         </div>
       </section>
 
-      {/* 返回主页按钮 */}
-      <div className="py-12 flex justify-center">
+      {/* Back to Home Button */}
+      <div className="py-20 flex justify-center">
         <Link 
           href="/" 
-          className="group flex items-center gap-2 px-8 py-3 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1"
+          className="group flex items-center gap-2 px-10 py-4 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1"
         >
           <span className="font-medium">返回主页</span>
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width="18" 
-            height="18" 
+            width="20" 
+            height="20" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
