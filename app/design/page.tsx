@@ -1,6 +1,9 @@
+"use client";
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Monitor, Image, Camera, Brush, Play } from "lucide-react"
+import { ImagePlaceholder } from "@/components/image-placeholder"
 
 export default function DesignPage() {
   return (
@@ -40,10 +43,11 @@ export default function DesignPage() {
               负责成都理工大学官方网站首页轮播大图的设计制作，
               结合校园文化与时事热点，呈现学校的多元风采。
             </p>
-            <div className="aspect-[21/9] bg-muted rounded-lg overflow-hidden">
+            {/* 修复后的图片区域：去掉了导致报错的冗余逻辑，保持最简 */}
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-border bg-muted">
               <img 
-                src="/design-cdut-portal-banner.jpg" 
-                alt="官网门户大图" 
+                src="/qswl.jpg" 
+                alt="官网门户大图作品" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -67,27 +71,21 @@ export default function DesignPage() {
               展现创意思维与视觉表达能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="aspect-[3/4] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-poster-1.jpg" 
-                  alt="海报作品1" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-[3/4] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-poster-2.jpg" 
-                  alt="海报作品2" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-[3/4] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-poster-3.jpg" 
-                  alt="海报作品3" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImagePlaceholder
+                icon={Image}
+                text="海报作品 1"
+                aspectRatio="aspect-[3/4]"
+              />
+              <ImagePlaceholder
+                icon={Image}
+                text="海报作品 2"
+                aspectRatio="aspect-[3/4]"
+              />
+              <ImagePlaceholder
+                icon={Image}
+                text="海报作品 3"
+                aspectRatio="aspect-[3/4]"
+              />
             </div>
           </div>
 
@@ -109,34 +107,26 @@ export default function DesignPage() {
               将自然之美与传统文化相结合，用镜头记录季节变换的诗意。
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-photo-spring.jpg" 
-                  alt="春季节气" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-photo-summer.jpg" 
-                  alt="夏季节气" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-photo-autumn.jpg" 
-                  alt="秋季节气" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-photo-winter.jpg" 
-                  alt="冬季节气" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImagePlaceholder
+                icon={Camera}
+                text="春"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Camera}
+                text="夏"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Camera}
+                text="秋"
+                aspectRatio="aspect-square"
+              />
+              <ImagePlaceholder
+                icon={Camera}
+                text="冬"
+                aspectRatio="aspect-square"
+              />
             </div>
           </div>
 
@@ -158,24 +148,20 @@ export default function DesignPage() {
               展现数字绘画技巧与创意构思能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-game-art-1.jpg" 
-                  alt="游戏原画1" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
-                <img 
-                  src="/design-game-art-2.jpg" 
-                  alt="游戏原画2" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ImagePlaceholder
+                icon={Brush}
+                text="游戏原画作品"
+                aspectRatio="aspect-[4/3]"
+              />
+              <ImagePlaceholder
+                icon={Brush}
+                text="插画创作"
+                aspectRatio="aspect-[4/3]"
+              />
             </div>
           </div>
 
-          {/* 手术动画尝试 */}
+          {/* 动画作品尝试 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -192,13 +178,11 @@ export default function DesignPage() {
               尝试制作的医学科普动画，将复杂的手术过程以简洁易懂的动画形式呈现，
               探索动画在内容创作领域的应用可能。
             </p>
-            <div className="aspect-video bg-muted rounded-lg overflow-hidden flex items-center justify-center">
-              <img 
-                src="/design-animation-thumbnail.jpg" 
-                alt="动画作品封面" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <ImagePlaceholder
+              icon={Play}
+              text="动画作品"
+              aspectRatio="aspect-video"
+            />
           </div>
 
         </div>
