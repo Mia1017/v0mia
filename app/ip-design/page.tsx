@@ -131,8 +131,9 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-accent/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 03 成都理工大学官方IP栗子君 - 修复 xioahan.jpg 排版 */}
+          {/* 03 栗子君 - 重构排版以解决比例问题 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
+            {/* 文字标题部分 - 居中 */}
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 shadow-inner">
@@ -147,51 +148,55 @@ export default function IPDesignPage() {
               </div>
             </div>
 
-            <div className="space-y-12 flex flex-col items-center">
-              {/* 第一排：全宽横图 lidong.jpg */}
-              <div className="w-full max-w-5xl">
-                <div className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
+            {/* 图片展示区 - 重构为左右并列布局 */}
+            <div className="w-full flex flex-col md:flex-row gap-8 max-w-6xl mx-auto items-start overflow-hidden">
+              
+              {/* 左侧：长截图 xioahan.jpg (占 45%) */}
+              <div className="w-full md:w-[45%] shrink-0">
+                <div className="w-full relative rounded-xl border border-border shadow-lg overflow-hidden bg-white">
                   <img 
-                    src="/v0-designer-brand-tk/lidong.jpg" 
-                    alt="栗子君立冬图" 
+                    src="/v0-designer-brand-tk/xioahan.jpg" 
+                    alt="栗子君商店长图" 
                     className="w-full h-auto block" 
                   />
                 </div>
               </div>
 
-              {/* 第二排：并列布局，通过 items-center 解决长短不一的尴尬 */}
-              <div className="w-full flex flex-col md:flex-row gap-8 max-w-5xl items-center pt-8 border-t border-border/60">
+              {/* 右侧：垂直组合 (Lidong横图 + GIF网格) - 争取与左侧高度一致 */}
+              <div className="w-full md:flex-1 space-y-8 flex flex-col items-center">
                 
-                {/* 左侧：长截图 xioahan.jpg (占 45%) */}
-                <div className="w-full md:w-[45%] shrink-0">
-                  <div className="w-full relative rounded-xl border border-border shadow-lg overflow-hidden bg-white">
+                {/* 1. 横图 lidong.jpg - 缩小并放置在此 */}
+                <div className="w-full max-w-xl">
+                  <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                     <img 
-                      src="/v0-designer-brand-tk/xioahan.jpg" 
-                      alt="栗子君商店长图" 
-                      className="w-full h-auto block" 
+                      src="/v0-designer-brand-tk/lidong.jpg" 
+                      alt="栗子君官方插图" 
+                      className="w-full h-auto block p-0.5"
                     />
                   </div>
                 </div>
 
-                {/* 右侧：2X2 GIF 网格 (占 50%) - 垂直居中对齐左侧 */}
-                <div className="w-full md:flex-1">
-                  <div className="grid grid-cols-2 gap-6">
+                {/* 2. GIF 2X2 网格 (占 50%) */}
+                <div className="w-full max-w-xl">
+                  <div className="grid grid-cols-2 gap-3">
                     {[
                       { name: 'miaohui.gif', alt: '秒回' },
                       { name: 'wushi.gif', alt: '武狮' },
                       { name: 'dianyin.gif', alt: '电音' },
                       { name: 'majiang.gif', alt: '麻将' }
                     ].map((gif) => (
-                      <div key={gif.name} className="aspect-square relative rounded-xl overflow-hidden border border-border bg-white shadow-sm transition-transform hover:scale-[1.05]">
+                      <div key={gif.name} className="aspect-square relative rounded-xl overflow-hidden border border-border bg-white shadow-md transition-transform hover:scale-[1.05]">
+                        {/* 使用标准 img 标签直接加载 GIF */}
                         <img 
                           src={`/v0-designer-brand-tk/${gif.name}`} 
                           alt={gif.alt} 
-                          className="w-full h-full object-contain p-2"
+                          className="w-full h-full object-contain p-1"
                         />
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 text-center">
+                  {/* 动图标题 */}
+                  <div className="mt-4 text-center">
                     <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
                       动态表情展示
                     </h3>
@@ -199,6 +204,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
             </div>
+            
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-primary/20 blur-[60px] -z-10"></div>
           </div>
 
