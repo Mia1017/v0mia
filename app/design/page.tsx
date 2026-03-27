@@ -11,7 +11,7 @@ export default function DesignPage() {
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">
-            设计作品
+            视觉设计
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             海报设计 · 摄影作品 · 绘画原画 · 动画创作
