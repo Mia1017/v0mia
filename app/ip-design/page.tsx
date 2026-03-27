@@ -43,8 +43,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                为成都理工大学体育学院 design 品牌Logo及配套角色形象。
-                设计将体育精神与学院特色相融合，打造具有辨识度的视觉识别系统。
+                为成都理工大学体育学院设计品牌Logo及配套角色形象。设计将体育精神与学院特色相融合，打造具有辨识度的视觉识别系统。
               </p>
             </div>
 
@@ -97,7 +96,7 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-primary/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 02 时尚芭莎获奖作品 - 布局和内容完全保持不变 */}
+          {/* 02 时尚芭莎获奖作品 - 布局保持一致 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
@@ -131,9 +130,8 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-accent/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 03 栗子君 - 重构排版以解决比例问题：精准缩小左侧截图，修改文字标题 */}
+          {/* 03 栗子君 - 重构排版：通过放大左侧长图比例实现底部对齐 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
-            {/* 文字标题部分 - 居中，统一 font-bold */}
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 shadow-inner">
@@ -148,11 +146,10 @@ export default function IPDesignPage() {
               </div>
             </div>
 
-            {/* 图片展示区 - 重构排版：xioahan进一步缩小，右侧垂直组合 */}
             <div className="w-full flex flex-col md:flex-row gap-8 max-w-6xl mx-auto items-center md:items-start pt-6 border-t border-border/60 overflow-x-hidden">
               
-              {/* 左侧：商店长截图 xioahan.jpg - 精准缩小占比 (从 38% 缩小至 34%) 并保持等比例 */}
-              <div className="w-full md:w-[34%] shrink-0 overflow-hidden relative items-center justify-center flex">
+              {/* 左侧：长截图 xioahan.jpg - 回调至 38% 占比，利用等比例放大增加高度，使底部与右侧持平 */}
+              <div className="w-full md:w-[38%] shrink-0 overflow-hidden relative flex flex-col">
                 <div className="w-full relative rounded-xl border border-border shadow-lg overflow-hidden bg-white p-1">
                   <img 
                     src="/v0-designer-brand-tk/xioahan.jpg" 
@@ -162,37 +159,35 @@ export default function IPDesignPage() {
                 </div>
               </div>
 
-              {/* 右侧：垂直组合 (Lidong横图 + GIFs) */}
+              {/* 右侧：垂直组合 (封面图 + GIF网格) */}
               <div className="w-full md:flex-1 space-y-10 flex flex-col items-center">
                 
-                {/* 1. 横图 lidong.jpg - 缩小并放置在此 */}
+                {/* 1. 公众号封面部分 */}
                 <div className="w-full flex flex-col items-center gap-6 pt-4 border-b border-border/60 pb-10">
                   <div className="w-full max-w-lg">
                     <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                       <img 
                         src="/v0-designer-brand-tk/lidong.jpg" 
-                        alt="立冬文章封面插图" 
+                        alt="手绘公众号封面插图" 
                         className="w-full h-auto block p-0.5"
                       />
                     </div>
                   </div>
-                  {/* 精准修改标题内容为：手绘公众号封面 */}
                   <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
                     手绘公众号封面
                   </h3>
                 </div>
 
-                {/* 2. GIF 2X2 网格 (占 50%) */}
+                {/* 2. 表情包部分 */}
                 <div className="w-full max-w-lg">
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { name: 'miaohui.gif', alt: '秒回GIF表情' },
-                      { name: 'wushi.gif', alt: '武狮GIF表情' },
-                      { name: 'dianyin.gif', alt: '电音GIF表情' },
-                      { name: 'majiang.gif', alt: '麻将GIF表情' }
+                      { name: 'miaohui.gif', alt: '秒回' },
+                      { name: 'wushi.gif', alt: '武狮' },
+                      { name: 'dianyin.gif', alt: '电音' },
+                      { name: 'majiang.gif', alt: '麻将' }
                     ].map((gif) => (
                       <div key={gif.name} className="aspect-square relative rounded-xl overflow-hidden border border-border bg-white shadow-md transition-transform hover:scale-[1.05]">
-                        {/* 使用标准 img 标签直接加载 GIF */}
                         <img 
                           src={`/v0-designer-brand-tk/${gif.name}`} 
                           alt={gif.alt} 
@@ -201,7 +196,6 @@ export default function IPDesignPage() {
                       </div>
                     ))}
                   </div>
-                  {/* 精准修改标题内容为：新春gif表情包 */}
                   <div className="mt-6 text-center">
                     <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
                       新春gif表情包
@@ -217,9 +211,7 @@ export default function IPDesignPage() {
         </div>
       </section>
 
-      {/* Skills Section - 保持原样... */}
-      {/* Footer Section - 保持原样... */}
-
+      <Footer />
     </div>
   )
 }
