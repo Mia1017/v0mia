@@ -1,10 +1,10 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/v0-designer-brand-tk',
-  images: { unoptimized: true },
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
+  basePath: '/v0mia',
+  assetPrefix: '/v0mia/',
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
