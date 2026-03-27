@@ -2,7 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Award, Star, Smile, Palette, ExternalLink, ArrowLeft } from "lucide-react"
+import { Award, Star, Smile, Palette, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -15,7 +15,7 @@ export default function IPDesignPage() {
       <section className="pt-32 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-serif text-4xl md:text-6xl font-light mb-6 hero-text-shadow">
-            IP设计
+            IP创作
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Logo · 角色 · 表情包
@@ -42,7 +42,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                为成都理工大学体育学院设计Logo及配套吉祥物形象。将体育精神与学院特色相融合，构建统一且具有识别度的视觉形象体系。
+                为成都理工大学体育学院设计Logo及配套吉祥物形象。<br />将体育精神与学院特色相融合，构建统一且具有识别度的视觉形象体系。
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                设计融合时尚表达与角色趣味性，结合品牌调性与产品属性，呈现传统文化与当代潮流的碰撞与再创造，强化品牌视觉记忆与传播辨识度。
+                设计融合时尚表达与角色趣味性，结合品牌调性与产品属性，<br />呈现传统文化与当代潮流的碰撞与再创造，强化品牌视觉记忆与传播辨识度。
               </p>
             </div>
 
@@ -144,7 +144,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                围绕校园IP“栗子君”展开创作，进行内容策划与视觉延展，产出表情包及系列插画等衍生内容，提升角色亲和力与传播力，强化校级品牌形象识别度。
+                围绕校园IP“栗子君”展开创作，进行内容策划与视觉延展，产出表情包及系列插画等衍生内容，<br />提升角色亲和力与传播力，强化校级品牌形象识别度。
               </p>
             </div>
 
@@ -206,18 +206,29 @@ export default function IPDesignPage() {
         </div>
       </section>
 
-      {/* Back to Home Button */}
-      <section className="py-12 px-4">
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link 
-            href="/" 
-            className="group flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+      {/* 返回主页按钮 - 放置在内容与页脚之间 */}
+      <div className="py-12 flex justify-center">
+        <Link 
+          href="/" 
+          className="group flex items-center gap-2 px-8 py-3 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1"
+        >
+          <span className="font-medium">返回主页</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="group-hover:translate-x-1 transition-transform"
           >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span className="font-medium">返回主页</span>
-          </Link>
-        </div>
-      </section>
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </Link>
+      </div>
 
       <Footer />
     </div>
