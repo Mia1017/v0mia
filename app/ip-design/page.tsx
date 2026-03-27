@@ -151,7 +151,7 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-accent/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 03 成都理工大学官方IP栗子 - 精准修改部分 */}
+          {/* 03 成都理工大学官方IP栗子君 - 精准修改部分 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
             {/* 文字描述部分 - 保持居中排版 */}
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
@@ -162,13 +162,13 @@ export default function IPDesignPage() {
                 <div>
                   {/* 统一为 font-bold */}
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
-                    成都理工大学官方IP栗子
+                    成都理工大学官方IP栗子君
                   </h2>
-                  <p className="text-sm text-primary font-medium tracking-wide italic">表情包 · 系列插图</p>
+                  <p className="text-sm text-primary font-medium tracking-wide italic">表情包设计 · 系列插图</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                主导官方吉祥物「栗子」表情包设计，并在微信表情商店上架，增添校园文化传播的趣味性。
+                参与吉祥物官方表情包设计，并在微信商店上架，探索IP与微信表情的结合。
               </p>
             </div>
 
@@ -179,19 +179,19 @@ export default function IPDesignPage() {
                 <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                   <img 
                     src="/v0-designer-brand-tk/lidong.jpg" 
-                    alt="栗子君官方插图 - 立冬" 
+                    alt="官方IP插图 - 立冬" 
                     className="w-full h-auto block p-0.5"
                   />
                 </div>
               </div>
 
               {/* 第二排：并列布局 */}
-              <div className="w-full flex flex-col md:flex-row gap-6 max-w-5xl items-center md:items-start pt-6 border-t border-border/60">
-                {/* 左侧：一张长截图 xiaohan.jpg */}
-                <div className="w-full md:flex-1 shrink-0">
+              <div className="w-full flex flex-col md:flex-row gap-6 max-w-5xl items-center md:items-start pt-6 border-t border-border/60 overflow-x-hidden">
+                {/* 左侧：一张长截图 xioahan.jpg - 精准修复拼写 */}
+                <div className="w-full md:flex-1 shrink-0 overflow-hidden">
                   <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
                     <img 
-                      src="/v0-designer-brand-tk/xiaohan.jpg" 
+                      src="/v0-designer-brand-tk/xioahan.jpg" 
                       alt="栗子君表情包微信商店截图" 
                       className="w-full h-auto block p-0.5"
                     />
@@ -199,7 +199,7 @@ export default function IPDesignPage() {
                 </div>
 
                 {/* 右侧：2X2 网格放 GIF */}
-                <div className="w-full md:w-2/5 shrink-0">
+                <div className="w-full md:w-2/5 shrink-0 overflow-hidden">
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       { name: 'miaohui.gif', alt: '秒回GIF' },
