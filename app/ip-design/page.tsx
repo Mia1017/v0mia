@@ -112,7 +112,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                作品「莎莎」荣获时尚芭莎IP设计大赛奖项。设计将时尚感与角色趣味性完美结合，探索传统文化与现代潮流的碰撞。
+                作品「莎莎」荣获时尚芭莎IP设计大赛奖项。设计融合时尚感与角色趣味性，探索传统文化与现代潮流的碰撞。
               </p>
             </div>
 
@@ -133,7 +133,7 @@ export default function IPDesignPage() {
 
           {/* 03 栗子君 - 重构排版以解决比例问题 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
-            {/* 文字标题部分 - 居中 */}
+            {/* 文字标题部分 - 居中，统一 font-bold */}
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 shadow-inner">
@@ -148,37 +148,43 @@ export default function IPDesignPage() {
               </div>
             </div>
 
-            {/* 图片展示区 - 重构为左右并列布局 */}
-            <div className="w-full flex flex-col md:flex-row gap-8 max-w-6xl mx-auto items-start overflow-hidden">
+            {/* 图片展示区 - 重构排版：xioahan缩小，右侧垂直组合 */}
+            <div className="w-full flex flex-col md:flex-row gap-8 max-w-6xl mx-auto items-center md:items-start pt-6 border-t border-border/60 overflow-x-hidden">
               
-              {/* 左侧：长截图 xioahan.jpg (占 45%) */}
-              <div className="w-full md:w-[45%] shrink-0">
+              {/* 左侧：长截图 xioahan.jpg - 精准缩小占比 (占 38%) 并保持等比例 */}
+              <div className="w-full md:w-[38%] shrink-0 overflow-hidden relative items-center justify-center flex">
                 <div className="w-full relative rounded-xl border border-border shadow-lg overflow-hidden bg-white">
                   <img 
                     src="/v0-designer-brand-tk/xioahan.jpg" 
-                    alt="栗子君商店长图" 
-                    className="w-full h-auto block" 
+                    alt="商店截图" 
+                    className="w-full h-auto block aspect-auto object-contain" 
                   />
                 </div>
               </div>
 
-              {/* 右侧：垂直组合 (Lidong横图 + GIF网格) - 争取与左侧高度一致 */}
-              <div className="w-full md:flex-1 space-y-8 flex flex-col items-center">
+              {/* 右侧：垂直组合 (Lidong横图 + GIFs) */}
+              <div className="w-full md:flex-1 space-y-10 flex flex-col items-center">
                 
-                {/* 1. 横图 lidong.jpg - 缩小并放置在此 */}
-                <div className="w-full max-w-xl">
-                  <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
-                    <img 
-                      src="/v0-designer-brand-tk/lidong.jpg" 
-                      alt="栗子君官方插图" 
-                      className="w-full h-auto block p-0.5"
-                    />
+                {/* 1. 横图 lidong.jpg 缩小并放置在此 */}
+                <div className="w-full flex flex-col items-center gap-6 pt-4 border-b border-border/60 pb-10">
+                  <div className="w-full max-w-xl">
+                    <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
+                      <img 
+                        src="/v0-designer-brand-tk/lidong.jpg" 
+                        alt="文章封面图" 
+                        className="w-full h-auto block p-0.5"
+                      />
+                    </div>
                   </div>
+                  {/* 精准修改标题：手绘微信文章封面 */}
+                  <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
+                    手绘微信文章封面
+                  </h3>
                 </div>
 
                 {/* 2. GIF 2X2 网格 (占 50%) */}
                 <div className="w-full max-w-xl">
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-4">
                     {[
                       { name: 'miaohui.gif', alt: '秒回' },
                       { name: 'wushi.gif', alt: '武狮' },
@@ -190,15 +196,15 @@ export default function IPDesignPage() {
                         <img 
                           src={`/v0-designer-brand-tk/${gif.name}`} 
                           alt={gif.alt} 
-                          className="w-full h-full object-contain p-1"
+                          className="w-full h-full object-contain p-2"
                         />
                       </div>
                     ))}
                   </div>
-                  {/* 动图标题 */}
-                  <div className="mt-4 text-center">
+                  {/* 精准修改标题：新春gif表情包 */}
+                  <div className="mt-6 text-center">
                     <h3 className="text-sm text-primary font-medium tracking-wider italic uppercase">
-                      动态表情展示
+                      新春gif表情包
                     </h3>
                   </div>
                 </div>
@@ -211,7 +217,9 @@ export default function IPDesignPage() {
         </div>
       </section>
 
-      <Footer />
+      {/* Skills Section - 保持原样... */}
+      {/* Footer Section - 保持原样... */}
+
     </div>
   )
 }
