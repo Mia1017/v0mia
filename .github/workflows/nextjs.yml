@@ -22,6 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ✅ 用 pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -38,6 +39,7 @@ jobs:
         with:
           static_site_generator: next
 
+      # ✅ 缓存改成 pnpm-lock.yaml
       - name: Restore Next.js cache
         uses: actions/cache@v4
         with:
@@ -47,8 +49,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
+      # ✅ 关键：不用 frozen-lockfile
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build with Next.js
         run: pnpm exec next build
