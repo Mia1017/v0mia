@@ -1,11 +1,13 @@
+"use client"
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Monitor, Image, Camera, Brush, Play } from "lucide-react"
-import { ImagePlaceholder } from "@/components/image-placeholder"
+import { Monitor, Image as ImageIcon, Camera, Brush, Play } from "lucide-react"
+import Link from "next/link"
 
 export default function DesignPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
       {/* Hero */}
@@ -37,22 +39,35 @@ export default function DesignPage() {
                 <p className="text-sm text-muted-foreground">大图制作</p>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground leading-relaxed mb-8">
               负责成都理工大学官方网站首页轮播大图的设计制作，
               结合校园文化与时事热点，呈现学校的多元风采。
             </p>
-            <ImagePlaceholder
-              icon={Monitor}
-              text="官网门户大图作品"
-              aspectRatio="aspect-[21/9]"
-            />
+            
+            {/* 图片垂直排列区域 */}
+            <div className="flex flex-col gap-6 md:gap-10">
+              {[
+                { src: "yu.jpg", alt: "官网门户大图-雨" },
+                { src: "hanlu.png", alt: "官网门户大图-寒露" },
+                { src: "liqiu.jpg", alt: "官网门户大图-立秋" },
+                { src: "dong.png", alt: "官网门户大图-冬" }
+              ].map((img, index) => (
+                <div key={index} className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-white group transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                  <img 
+                    src={`/v0-designer-brand-tk/${img.src}`} 
+                    alt={img.alt} 
+                    className="w-full h-auto block object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* 海报获奖作品 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <Image className="w-6 h-6 text-accent" />
+                <ImageIcon className="w-6 h-6 text-accent" />
               </div>
               <div>
                 <h2 className="font-serif text-2xl font-light text-foreground mb-2">
@@ -66,21 +81,9 @@ export default function DesignPage() {
               展现创意思维与视觉表达能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <ImagePlaceholder
-                icon={Image}
-                text="海报作品 1"
-                aspectRatio="aspect-[3/4]"
-              />
-              <ImagePlaceholder
-                icon={Image}
-                text="海报作品 2"
-                aspectRatio="aspect-[3/4]"
-              />
-              <ImagePlaceholder
-                icon={Image}
-                text="海报作品 3"
-                aspectRatio="aspect-[3/4]"
-              />
+              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs">海报作品 1</div>
+              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs">海报作品 2</div>
+              <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center border border-dashed border-border text-muted-foreground text-xs">海报作品 3</div>
             </div>
           </div>
 
@@ -102,26 +105,9 @@ export default function DesignPage() {
               将自然之美与传统文化相结合，用镜头记录季节变换的诗意。
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <ImagePlaceholder
-                icon={Camera}
-                text="春"
-                aspectRatio="aspect-square"
-              />
-              <ImagePlaceholder
-                icon={Camera}
-                text="夏"
-                aspectRatio="aspect-square"
-              />
-              <ImagePlaceholder
-                icon={Camera}
-                text="秋"
-                aspectRatio="aspect-square"
-              />
-              <ImagePlaceholder
-                icon={Camera}
-                text="冬"
-                aspectRatio="aspect-square"
-              />
+              {['春', '夏', '秋', '冬'].map((season) => (
+                <div key={season} className="aspect-square bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-xs">{season}</div>
+              ))}
             </div>
           </div>
 
@@ -143,16 +129,8 @@ export default function DesignPage() {
               展现数字绘画技巧与创意构思能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <ImagePlaceholder
-                icon={Brush}
-                text="游戏原画作品"
-                aspectRatio="aspect-[4/3]"
-              />
-              <ImagePlaceholder
-                icon={Brush}
-                text="插画创作"
-                aspectRatio="aspect-[4/3]"
-              />
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-xs">游戏原画作品</div>
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center border border-border text-muted-foreground text-xs">插画创作</div>
             </div>
           </div>
 
@@ -173,11 +151,9 @@ export default function DesignPage() {
               尝试制作的医学科普动画，将复杂的手术过程以简洁易懂的动画形式呈现，
               探索动画在内容创作领域的应用可能。
             </p>
-            <ImagePlaceholder
-              icon={Play}
-              text="动画作品"
-              aspectRatio="aspect-video"
-            />
+            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border">
+              <Play className="w-8 h-8 text-muted-foreground/30" />
+            </div>
           </div>
 
         </div>
@@ -188,16 +164,38 @@ export default function DesignPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl font-light text-foreground mb-8">设计技能</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">Photoshop</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">Illustrator</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">After Effects</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">Procreate</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">摄影</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">数字绘画</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">动画制作</span>
+            {["Photoshop", "Illustrator", "After Effects", "Procreate", "摄影", "数字绘画", "动画制作"].map((skill) => (
+              <span key={skill} className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* 返回主页按钮 */}
+      <div className="py-12 flex justify-center">
+        <Link 
+          href="/" 
+          className="group flex items-center gap-2 px-8 py-3 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1"
+        >
+          <span className="font-medium">返回主页</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="group-hover:translate-x-1 transition-transform"
+          >
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </Link>
+      </div>
 
       <Footer />
     </div>
