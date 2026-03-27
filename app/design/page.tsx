@@ -1,3 +1,5 @@
+"use client";
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Monitor, Image as ImageIcon, Camera, Brush, Play } from "lucide-react"
@@ -110,7 +112,7 @@ export default function DesignPage() {
             </div>
           </div>
 
-          {/* 绘画作品游戏原画 */}
+          {/* 绘画作品 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -143,12 +145,11 @@ export default function DesignPage() {
                 <h2 className="font-serif text-2xl font-light text-foreground mb-2">
                   动画作品尝试
                 </h2>
-                <p className="text-sm text-muted-foreground">小红书动画作品</p>
+                <p className="text-sm text-muted-foreground">科普动画</p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              尝试制作的医学科普动画，将复杂的手术过程以简洁易懂的动画形式呈现，
-              探索动画在内容创作领域的应用可能。
+              将复杂的过程以简洁易懂的动画形式呈现，探索动画在内容创作领域的应用可能。
             </p>
             <ImagePlaceholder icon={Play} text="动画作品" aspectRatio="aspect-video" />
           </div>
