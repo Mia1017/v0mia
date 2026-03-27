@@ -43,11 +43,11 @@ export default function DesignPage() {
               负责成都理工大学官方网站首页轮播大图的设计制作，
               结合校园文化与时事热点，呈现学校的多元风采。
             </p>
-            {/* 修复后的图片区域：去掉了导致报错的冗余逻辑，保持最简 */}
+            {/* 核心展示区域 */}
             <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-border bg-muted">
               <img 
                 src="/qswl.jpg" 
-                alt="官网门户大图作品" 
+                alt="成都理工大学官网大图作品" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -107,30 +107,14 @@ export default function DesignPage() {
               将自然之美与传统文化相结合，用镜头记录季节变换的诗意。
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <ImagePlaceholder
-                icon={Camera}
-                text="春"
-                aspectRatio="aspect-square"
-              />
-              <ImagePlaceholder
-                icon={Camera}
-                text="夏"
-                aspectRatio="aspect-square"
-              />
-              <ImagePlaceholder
-                icon={Camera}
-                text="秋"
-                aspectRatio="aspect-square"
-              />
-              <ImagePlaceholder
-                icon={Camera}
-                text="冬"
-                aspectRatio="aspect-square"
-              />
+              <ImagePlaceholder icon={Camera} text="春" aspectRatio="aspect-square" />
+              <ImagePlaceholder icon={Camera} text="夏" aspectRatio="aspect-square" />
+              <ImagePlaceholder icon={Camera} text="秋" aspectRatio="aspect-square" />
+              <ImagePlaceholder icon={Camera} text="冬" aspectRatio="aspect-square" />
             </div>
           </div>
 
-          {/* 绘画作品游戏原画 */}
+          {/* 绘画作品 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -148,16 +132,8 @@ export default function DesignPage() {
               展现数字绘画技巧与创意构思能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <ImagePlaceholder
-                icon={Brush}
-                text="游戏原画作品"
-                aspectRatio="aspect-[4/3]"
-              />
-              <ImagePlaceholder
-                icon={Brush}
-                text="插画创作"
-                aspectRatio="aspect-[4/3]"
-              />
+              <ImagePlaceholder icon={Brush} text="游戏原画作品" aspectRatio="aspect-[4/3]" />
+              <ImagePlaceholder icon={Brush} text="插画创作" aspectRatio="aspect-[4/3]" />
             </div>
           </div>
 
@@ -171,18 +147,13 @@ export default function DesignPage() {
                 <h2 className="font-serif text-2xl font-light text-foreground mb-2">
                   动画作品尝试
                 </h2>
-                <p className="text-sm text-muted-foreground">小红书动画作品</p>
+                <p className="text-sm text-muted-foreground">科普动画</p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              尝试制作的医学科普动画，将复杂的手术过程以简洁易懂的动画形式呈现，
-              探索动画在内容创作领域的应用可能。
+              将复杂的过程以简洁易懂的动画形式呈现，探索动画在内容创作领域的应用可能。
             </p>
-            <ImagePlaceholder
-              icon={Play}
-              text="动画作品"
-              aspectRatio="aspect-video"
-            />
+            <ImagePlaceholder icon={Play} text="动画展示" aspectRatio="aspect-video" />
           </div>
 
         </div>
@@ -193,13 +164,11 @@ export default function DesignPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl font-light text-foreground mb-8">设计技能</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">Photoshop</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">Illustrator</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">After Effects</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">Procreate</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">摄影</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">数字绘画</span>
-            <span className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">动画制作</span>
+            {["Photoshop", "Illustrator", "After Effects", "Procreate", "摄影", "数字绘画"].map((skill) => (
+              <span key={skill} className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       </section>
