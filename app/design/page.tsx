@@ -2,7 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Monitor, Image, Camera, Brush, Play } from "lucide-react"
+import { Monitor, Image as ImageIcon, Camera, Brush, Play } from "lucide-react"
 import { ImagePlaceholder } from "@/components/image-placeholder"
 
 export default function DesignPage() {
@@ -43,21 +43,19 @@ export default function DesignPage() {
               负责成都理工大学官方网站首页轮播大图的设计制作，
               结合校园文化与时事热点，呈现学校的多元风采。
             </p>
-            {/* 核心展示区域 */}
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-border bg-muted">
-              <img 
-                src="/qswl.jpg" 
-                alt="成都理工大学官网大图作品" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {/* 如果有官网大图文件，可按下方摄影作品格式替换 */}
+            <ImagePlaceholder
+              icon={Monitor}
+              text="官网门户大图作品"
+              aspectRatio="aspect-[21/9]"
+            />
           </div>
 
           {/* 海报获奖作品 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <Image className="w-6 h-6 text-accent" />
+                <ImageIcon className="w-6 h-6 text-accent" />
               </div>
               <div>
                 <h2 className="font-serif text-2xl font-light text-foreground mb-2">
@@ -71,25 +69,13 @@ export default function DesignPage() {
               展现创意思维与视觉表达能力。
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <ImagePlaceholder
-                icon={Image}
-                text="海报作品 1"
-                aspectRatio="aspect-[3/4]"
-              />
-              <ImagePlaceholder
-                icon={Image}
-                text="海报作品 2"
-                aspectRatio="aspect-[3/4]"
-              />
-              <ImagePlaceholder
-                icon={Image}
-                text="海报作品 3"
-                aspectRatio="aspect-[3/4]"
-              />
+              <ImagePlaceholder icon={ImageIcon} text="海报作品 1" aspectRatio="aspect-[3/4]" />
+              <ImagePlaceholder icon={ImageIcon} text="海报作品 2" aspectRatio="aspect-[3/4]" />
+              <ImagePlaceholder icon={ImageIcon} text="海报作品 3" aspectRatio="aspect-[3/4]" />
             </div>
           </div>
 
-          {/* 创意节气摄影 */}
+          {/* 创意节气摄影 - 已替换为你的图片 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -107,10 +93,22 @@ export default function DesignPage() {
               将自然之美与传统文化相结合，用镜头记录季节变换的诗意。
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <ImagePlaceholder icon={Camera} text="春" aspectRatio="aspect-square" />
-              <ImagePlaceholder icon={Camera} text="夏" aspectRatio="aspect-square" />
-              <ImagePlaceholder icon={Camera} text="秋" aspectRatio="aspect-square" />
-              <ImagePlaceholder icon={Camera} text="冬" aspectRatio="aspect-square" />
+              {/* 雨水 */}
+              <div className="overflow-hidden rounded-lg border border-border aspect-square">
+                <img src="/yu.jpg" alt="雨水" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              {/* 寒露 */}
+              <div className="overflow-hidden rounded-lg border border-border aspect-square">
+                <img src="/hanlu.jpg" alt="寒露" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              {/* 立秋 */}
+              <div className="overflow-hidden rounded-lg border border-border aspect-square">
+                <img src="/liqiu.jpg" alt="立秋" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              {/* 大雪/冬 */}
+              <div className="overflow-hidden rounded-lg border border-border aspect-square">
+                <img src="/dong.jpg" alt="冬" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
             </div>
           </div>
 
@@ -137,7 +135,7 @@ export default function DesignPage() {
             </div>
           </div>
 
-          {/* 动画作品尝试 */}
+          {/* 动画作品 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
@@ -153,7 +151,7 @@ export default function DesignPage() {
             <p className="text-muted-foreground leading-relaxed mb-6">
               将复杂的过程以简洁易懂的动画形式呈现，探索动画在内容创作领域的应用可能。
             </p>
-            <ImagePlaceholder icon={Play} text="动画展示" aspectRatio="aspect-video" />
+            <ImagePlaceholder icon={Play} text="动画作品" aspectRatio="aspect-video" />
           </div>
 
         </div>
@@ -164,7 +162,7 @@ export default function DesignPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl font-light text-foreground mb-8">设计技能</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            {["Photoshop", "Illustrator", "After Effects", "Procreate", "摄影", "数字绘画"].map((skill) => (
+            {["Photoshop", "Illustrator", "After Effects", "Procreate", "摄影", "数字绘画", "动画制作"].map((skill) => (
               <span key={skill} className="px-4 py-2 bg-background text-foreground rounded-full text-sm border border-border">
                 {skill}
               </span>
