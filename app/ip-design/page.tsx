@@ -2,8 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-// 确保导入所有图标，修复之前的 ReferenceError
-import { Award, Star, Smile, Palette, ExternalLink } from "lucide-react"
+import { Award, Star, Smile, Palette, ExternalLink, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -19,7 +18,7 @@ export default function IPDesignPage() {
             IP设计
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Logo设计 · 角色设计 · 表情包创作
+            Logo · 角色 · 表情包
           </p>
         </div>
       </section>
@@ -28,22 +27,22 @@ export default function IPDesignPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-16">
           
-          {/* 01 成都理工大学体育学院 - 严格按照原始代码，不做任何改动 */}
+          {/* 01 成都理工大学体育学院 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 shadow-inner">
-                  <Palette className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0 shadow-inner">
+                  <Palette className="w-6 h-6 text-accent" />
                 </div>
                 <div>
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
                     成都理工大学体育学院
                   </h2>
-                  <p className="text-sm text-primary font-medium tracking-wide italic">品牌形象与吉祥物设计</p>
+                  <p className="text-sm text-accent font-medium tracking-wide italic">Logo与吉祥物设计</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                为成都理工大学体育学院设计品牌Logo及配套角色形象。设计将体育精神与学院特色相融合，打造具有辨识度的视觉识别系统。
+                为成都理工大学体育学院设计Logo及配套吉祥物形象。将体育精神与学院特色相融合，构建统一且具有识别度的视觉形象体系。
               </p>
             </div>
 
@@ -96,7 +95,7 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-primary/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 02 时尚芭莎获奖作品 - 布局保持一致 */}
+          {/* 02 时尚芭莎获奖作品 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
@@ -105,13 +104,13 @@ export default function IPDesignPage() {
                 </div>
                 <div>
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
-                    时尚芭莎获奖作品
+                    时尚芭莎 × 纤茶 IP形象设计
                   </h2>
-                  <p className="text-sm text-accent font-medium tracking-wide italic">莎莎IP设计 · 荣誉奖项</p>
+                  <p className="text-sm text-accent font-medium tracking-wide italic">全国大学生广告艺术大赛获奖作品</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                作品「莎莎」荣获时尚芭莎IP设计大赛奖项。设计融合时尚感与角色趣味性，探索传统文化与现代潮流的碰撞。
+                设计融合时尚表达与角色趣味性，结合品牌调性与产品属性，呈现传统文化与当代潮流的碰撞与再创造，强化品牌视觉记忆与传播辨识度。
               </p>
             </div>
 
@@ -130,25 +129,26 @@ export default function IPDesignPage() {
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-accent/20 blur-[60px] -z-10"></div>
           </div>
 
-          {/* 03 栗子君 - 重构排版：通过放大左侧长图比例实现底部对齐 */}
+          {/* 03 栗子君 */}
           <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg overflow-hidden relative">
             <div className="max-w-3xl mx-auto text-center mb-12 relative z-10">
               <div className="flex items-center gap-4 mb-6 justify-center">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 shadow-inner">
-                  <Smile className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0 shadow-inner">
+                  <Smile className="w-6 h-6 text-accent" />
                 </div>
                 <div>
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
-                    成都理工大学官方IP
+                    成都理工大学官方IP角色｜栗子君
                   </h2>
-                  <p className="text-sm text-primary font-medium tracking-wide italic">栗子表情包 · 系列插图</p>
+                  <p className="text-sm text-accent font-medium tracking-wide italic">表情包 · 系列插画衍生设计</p>
                 </div>
               </div>
+              <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                围绕校园IP“栗子君”展开创作，进行内容策划与视觉延展，产出表情包及系列插画等衍生内容，提升角色亲和力与传播力，强化校级品牌形象识别度。
+              </p>
             </div>
 
             <div className="w-full flex flex-col md:flex-row gap-8 max-w-6xl mx-auto items-center md:items-start pt-6 border-t border-border/60 overflow-x-hidden">
-              
-              {/* 左侧：长截图 xioahan.jpg - 回调至 38% 占比，利用等比例放大增加高度，使底部与右侧持平 */}
               <div className="w-full md:w-[38%] shrink-0 overflow-hidden relative flex flex-col">
                 <div className="w-full relative rounded-xl border border-border shadow-lg overflow-hidden bg-white p-1">
                   <img 
@@ -159,10 +159,7 @@ export default function IPDesignPage() {
                 </div>
               </div>
 
-              {/* 右侧：垂直组合 (封面图 + GIF网格) */}
               <div className="w-full md:flex-1 space-y-10 flex flex-col items-center">
-                
-                {/* 1. 公众号封面部分 */}
                 <div className="w-full flex flex-col items-center gap-6 pt-4 border-b border-border/60 pb-10">
                   <div className="w-full max-w-lg">
                     <div className="w-full relative rounded-xl border border-border shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] overflow-hidden bg-white">
@@ -178,7 +175,6 @@ export default function IPDesignPage() {
                   </h3>
                 </div>
 
-                {/* 2. 表情包部分 */}
                 <div className="w-full max-w-lg">
                   <div className="grid grid-cols-2 gap-4">
                     {[
@@ -204,10 +200,22 @@ export default function IPDesignPage() {
                 </div>
               </div>
             </div>
-            
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-10 bg-primary/20 blur-[60px] -z-10"></div>
           </div>
 
+        </div>
+      </section>
+
+      {/* Back to Home Button */}
+      <section className="py-12 px-4">
+        <div className="max-w-7xl mx-auto flex justify-center">
+          <Link 
+            href="/" 
+            className="group flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            <span className="font-medium">返回主页</span>
+          </Link>
         </div>
       </section>
 
