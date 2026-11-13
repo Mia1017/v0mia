@@ -6,109 +6,204 @@ import { TrendingUp, Users, Zap, CheckCircle2, ExternalLink } from "lucide-react
 import Image from "next/image"
 import Link from "next/link"
 
-// 哔哩哔哩新增板块；收到图片后只需补充这里的图片列表。
-type BilibiliWorkImage = { src: string; alt: string; href?: string }
-
-const bilibiliImages: Record<string, BilibiliWorkImage[]> = {
-  visual: [],
-  hotspot: [],
-  proposal: [],
-  onsite: [],
-}
+import { useState, useEffect, useRef } from "react"
 
 const bilibiliReports = [
-  { title: "舞台剧｜六一首演", href: "https://mp.weixin.qq.com/s/_OVAMis2lGeLBJEEnu3oQQ" },
-  { title: "舞台剧｜暑期生日场", href: "https://mp.weixin.qq.com/s/buBqNJoiSLKxTgVHfmyzJA" },
-  { title: "上海历史博物馆｜咖啡嘉年华", href: "https://mp.weixin.qq.com/s/LMWaF9f92aWhFFYl5YN4rg" },
-  { title: "北京野生动物园｜五一活动", href: "https://mp.weixin.qq.com/s/JWBU0bq0zIiM1NPcbo9oDg" },
-  { title: "南京天街｜合作活动", href: "https://mp.weixin.qq.com/s/TCqVer7kgEI8UAi9rmYZCQ" },
-  { title: "上海小荧星｜开学季", href: "https://mp.weixin.qq.com/s/J37eCqUupZQqJVpyV-puSQ" },
+  { title: "舞台剧｜暑期生日场", href: "https://mp.weixin.qq.com/s/buBqNJoiSLKxTgVHfmyzJA", cover: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E8%88%9E%E5%8F%B0%E5%89%A7%E7%94%9F%E6%97%A5%E5%9C%BA%E6%88%98%E6%8A%A5.jpg?raw=true" },
+  { title: "上海历史博物馆｜咖啡嘉年华", href: "https://mp.weixin.qq.com/s/LMWaF9f92aWhFFYl5YN4rg", cover: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E4%B8%8A%E5%8E%86%E5%8D%9A%E6%88%98%E6%8A%A5.jpg?raw=true" },
+  { title: "北京野生动物园｜五一活动", href: "https://mp.weixin.qq.com/s/JWBU0bq0zIiM1NPcbo9oDg", cover: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E5%8C%97%E9%87%8E%E6%88%98%E6%8A%A5.jpg?raw=true" },
+  { title: "南京天街｜合作活动", href: "https://mp.weixin.qq.com/s/TCqVer7kgEI8UAi9rmYZCQ", cover: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E5%8D%97%E4%BA%AC%E5%A4%A9%E8%A1%97%E6%88%98%E6%8A%A5.jpg?raw=true" },
+  { title: "上海小荧星｜开学季", href: "https://mp.weixin.qq.com/s/J37eCqUupZQqJVpyV-puSQ", cover: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E5%B0%8F%E8%8D%A7%E6%98%9F%E6%88%98%E6%8A%A5.jpg?raw=true" },
 ]
 
-function BilibiliGallery({ title, images }: { title: string; images: BilibiliWorkImage[] }) {
+type BilibiliWorkImage = { src: string; alt: string; caption?: string }
+type BilibiliViewerState = { images: BilibiliWorkImage[]; index: number }
+
+const bilibiliImages: Record<string, BilibiliWorkImage[]> = {
+  visual: [
+    { src: "/海报截图1.JPG", alt: "视觉创意｜白垩纪情报局系列海报" },
+    { src: "/海报截图2.JPG", alt: "视觉创意｜三周年各站点主题海报" },
+  ],
+  hotspot: [
+    { src: "/蹭热度放最前面.jpg", alt: "热点策划1｜牛来热梗内容" },
+    { src: "/蹭热度2.jpg", alt: "热点策划2｜误闯天家舞蹈挑战" },
+    { src: "/蹭热度3.jpg", alt: "热点策划3｜角色与流行梗结合" },
+  ],
+  proposal: [
+    { src: "/方案截图1.JPG", alt: "策划方案1｜项目概览与IP基础" },
+    { src: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E6%96%B9%E6%A1%88%E6%88%AA%E5%9B%BE2%E4%BF%AE%E6%94%B9.JPG?raw=true", alt: "策划方案2｜主题场景与互动玩法" },
+    { src: "https://github.com/Mia1017/v0mia/blob/0f0be0a9c5f247f47a560d002d6e756fcf8bfe01/public/%E6%96%B9%E6%A1%88%E6%88%AA%E5%9B%BE3%E4%BF%AE%E6%94%B9.JPG?raw=true", alt: "策划方案3｜执行节奏与传播资源" },
+  ],
+}
+
+const bilibiliOnsiteGroups = [
+  { title: "舞台剧场外", images: [
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E8%88%9E%E5%8F%B0%E5%89%A7%E5%9C%BA%E5%A4%96%E6%89%93%E5%8D%A1%E8%AE%BE%E8%AE%A1.JPG", alt: "主题打卡设计", caption: "规划剧场外打卡场景，配合宣传物料设计。" },
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E8%88%9E%E5%8F%B0%E5%89%A7%E7%A5%9D%E7%A6%8F%E5%A2%99%E8%AE%BE%E8%AE%A1.JPG", alt: "生日祝福墙", caption: "设计生日祝福互动，配合祝福墙物料落地。" },
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E8%88%9E%E5%8F%B0%E5%89%A7%E5%9C%BA%E5%A4%96%E6%B4%BB%E5%8A%A81.JPG", alt: "场外活动执行", caption: "协调场外物料与现场互动，推进活动执行。" },
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E8%88%9E%E5%8F%B0%E5%89%A7%E5%9C%BA%E5%A4%96%E6%B4%BB%E5%8A%A83.JPG", alt: "亲子互动体验", caption: "配合打卡与祝福互动，延展剧场外IP体验。" },
+  ] },
+  { title: "生日会", images: [
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E7%94%9F%E6%97%A5%E4%BC%9A%E5%9C%BA%E5%A4%96%E5%B8%83%E7%BD%AE%E8%AE%BE%E8%AE%A1%E8%A7%84%E5%88%92.JPG", alt: "场景布置规划", caption: "规划生日会场景与物料布置，推进现场落地。" },
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E7%94%9F%E6%97%A5%E4%BC%9A%E5%8F%B0%E6%9C%AC%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%92%B0%E5%86%99.JPG", alt: "台本与流程", caption: "撰写活动台本与执行流程，衔接现场环节。" },
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E7%94%9F%E6%97%A5%E4%BC%9A%E7%B2%98%E5%9C%9F%E6%B4%BB%E5%8A%A8%E8%AE%BE%E8%AE%A1.JPG", alt: "黏土互动设计", caption: "设计亲子黏土互动玩法与参与流程。" },
+    { src: "https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E7%94%9F%E6%97%A5%E4%BC%9A%E7%B2%98%E5%9C%9F%E6%89%8B%E4%BD%9C%EF%BC%88%E8%87%AA%E5%88%B6%EF%BC%89.JPG", alt: "黏土手作示范", caption: "亲手制作IP黏土样品，辅助互动展示。" },
+  ] },
+]
+
+function BilibiliLightbox({ viewer, onClose, onStep }: {
+  viewer: BilibiliViewerState; onClose: () => void; onStep: (step: number) => void
+}) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const image = viewer.images[viewer.index]
+  useEffect(() => {
+    const dialog = dialogRef.current
+    const oldOverflow = document.body.style.overflow
+    dialog?.showModal()
+    document.body.style.overflow = "hidden"
+    closeRef.current?.focus()
+    return () => { dialog?.close(); document.body.style.overflow = oldOverflow }
+  }, [])
+  useEffect(() => { scrollRef.current?.scrollTo({ top: 0 }) }, [viewer.index])
   return (
-    <div className="min-w-0">
-      {images.length > 0 ? (
-        <div className="space-y-3">
-          {images.map((image) => (
-            <a key={image.src} href={image.href || image.src} target="_blank" rel="noopener noreferrer" className="block rounded-xl border border-border shadow-sm overflow-hidden bg-white transition-transform hover:scale-[1.02]">
-              <img src={image.src} alt={image.alt} loading="lazy" className="w-full h-auto block" />
-            </a>
-          ))}
+    <dialog ref={dialogRef} aria-label="作品图片预览" onCancel={onClose}
+      onClick={(event) => { if (event.target === event.currentTarget) onClose() }}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowLeft") { event.preventDefault(); onStep(-1) }
+        if (event.key === "ArrowRight") { event.preventDefault(); onStep(1) }
+      }}
+      className="m-auto w-[calc(100%-2rem)] max-w-5xl h-[90vh] max-h-[90vh] p-0 rounded-2xl border border-border bg-card text-foreground shadow-2xl backdrop:bg-black/70">
+      <div className="flex h-full min-h-0 flex-col">
+        <div className="shrink-0 flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
+          <p className="text-sm font-medium">{image.alt} <span className="text-muted-foreground">{viewer.index + 1} / {viewer.images.length}</span></p>
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={() => onStep(-1)} aria-label="上一张图片" className="rounded-full border border-border px-3 py-1.5 text-sm hover:bg-primary/10">←</button>
+            <button type="button" onClick={() => onStep(1)} aria-label="下一张图片" className="rounded-full border border-border px-3 py-1.5 text-sm hover:bg-primary/10">→</button>
+            <button ref={closeRef} type="button" onClick={onClose} className="rounded-full border border-border px-3 py-1.5 text-sm hover:bg-primary/10">关闭</button>
+          </div>
         </div>
-      ) : (
-        <div className="aspect-[4/3] rounded-xl border border-dashed border-border bg-primary/5 flex items-center justify-center text-sm text-muted-foreground/60" aria-label={`${title}图片预留位置`}>
-          {title} · 图片待补充
+        <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-background p-2 sm:p-5">
+          <img src={image.src} alt={image.alt} className="mx-auto block w-full h-auto rounded-lg" />
         </div>
-      )}
-      <p className="mt-3 text-sm text-muted-foreground text-center">{title}</p>
+      </div>
+    </dialog>
+  )
+}
+
+function BilibiliGallery({ images, mode, onOpen }: {
+  images: BilibiliWorkImage[]; mode: "visual" | "hotspot" | "proposal";
+  onOpen: (images: BilibiliWorkImage[], index: number) => void
+}) {
+  const containerClass = mode === "hotspot"
+    ? "flex items-start w-full max-w-[640px] mx-auto pt-3 pb-8"
+    : mode === "proposal" ? "grid grid-cols-3 gap-3 sm:gap-5 pt-2 pb-5" : "flex flex-col gap-6 pt-2 pb-7"
+  return (
+    <div className={containerClass}>
+      {images.map((image, index) => {
+        const placement = mode === "hotspot"
+          ? ["w-[42%] z-30", "w-[42%] -ml-[13%] z-20", "w-[42%] -ml-[13%] z-10"][index]
+          : ""
+        return (
+          <button key={image.src} type="button" onClick={() => onOpen(images, index)} aria-label={`放大查看${image.alt}`}
+            className={`relative block min-w-0 self-start rounded-xl border-2 border-white bg-white p-0.5 shadow-lg transition-all duration-300 hover:!z-40 hover:scale-[1.02] focus-visible:!z-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none ${placement}`}>
+            <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="block w-full h-auto rounded-lg" />
+          </button>
+        )
+      })}
     </div>
   )
 }
 
 function BilibiliSection() {
+  const [viewer, setViewer] = useState<BilibiliViewerState | null>(null)
+  const openImage = (images: BilibiliWorkImage[], index: number) => setViewer({ images, index })
+  const stepImage = (step: number) => setViewer((current) => current ? {
+    ...current, index: (current.index + step + current.images.length) % current.images.length,
+  } : null)
   return (
     <div className="bg-card rounded-xl p-8 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg">
       <div className="flex items-start gap-4 mb-8">
-        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-          <TrendingUp className="w-6 h-6 text-primary" />
-        </div>
+        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><TrendingUp className="w-6 h-6 text-primary" /></div>
         <div className="min-w-0">
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">B站头部亲子动画IP｜霸王龙雷奇</h2>
-          <p className="text-sm text-primary font-medium tracking-wide">哔哩哔哩动画制作部实习</p>
+          <p className="text-sm text-accent font-medium tracking-wide">哔哩哔哩动画制作部实习</p>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 lg:max-w-md">
-          <h3 className="font-serif text-xl font-bold text-foreground mb-4">线上｜内容策划·制作·传播</h3>
-          <p className="mb-5 text-sm md:text-base text-muted-foreground leading-relaxed">
-            负责全平台账号内容策划与运营，制定创意方向与传播排期；实习期间净增粉<strong className="text-foreground font-semibold">8,300+</strong>，总粉丝增长约<strong className="text-foreground font-semibold">40%</strong>。
-          </p>
-          <ul className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-            <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span><strong className="font-medium text-foreground">视觉创意：</strong>围绕IP调性与传播节点，规划海报、封面及宣传素材。</span></li>
-            <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span><strong className="font-medium text-foreground">热点策划：</strong>捕捉平台热梗，结合角色特点策划内容。</span></li>
-          </ul>
+      <div>
+        <h3 className="font-serif text-xl font-bold text-foreground mb-4">线上｜内容策划·制作·传播</h3>
+        <p className="mb-7 text-sm md:text-base text-muted-foreground leading-relaxed max-w-4xl">负责全平台账号内容策划与运营，制定创意方向与传播排期；实习期间净增粉<strong className="text-foreground font-semibold">8,300+</strong>，总粉丝增长约<strong className="text-foreground font-semibold">40%</strong>。</p>
+        <div className="space-y-10">
+          <div className="min-w-0">
+            <p className="mb-6 text-center text-sm md:text-base text-muted-foreground leading-relaxed"><strong className="font-semibold text-foreground">视觉创意：</strong>围绕IP调性与传播节点，规划海报、封面及宣传素材。</p>
+            <BilibiliGallery images={bilibiliImages.visual} mode="visual" onOpen={openImage} />
+          </div>
+          <div className="min-w-0">
+            <p className="mb-6 text-center text-sm md:text-base text-muted-foreground leading-relaxed"><strong className="font-semibold text-foreground">热点策划：</strong>捕捉平台热梗，结合角色特点策划内容。</p>
+            <div className="relative isolate overflow-hidden rounded-2xl border border-border/50 px-4 py-6 sm:px-8 sm:py-8">
+              <img src="https://raw.githubusercontent.com/Mia1017/v0mia/v0/wangbeiyi9-7207-21d319c8/public/%E8%83%8C%E6%99%AF%E5%BA%95%E5%9B%BE1.JPG" alt="" aria-hidden="true" draggable={false} loading="lazy" decoding="async" className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-30 select-none" />
+              <BilibiliGallery images={bilibiliImages.hotspot} mode="hotspot" onOpen={openImage} />
+            </div>
+          </div>
         </div>
-        <div className="w-full lg:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <BilibiliGallery title="视觉创意" images={bilibiliImages.visual} />
-          <BilibiliGallery title="热点策划" images={bilibiliImages.hotspot} />
-        </div>
+        
       </div>
 
-      <div className="mt-10 pt-10 border-t border-border flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 lg:max-w-md">
+      <div className="mt-10 pt-10 border-t border-border space-y-7">
+        <div className="w-full">
           <h3 className="font-serif text-xl font-bold text-foreground mb-4">线下｜活动策划·落地·推广</h3>
-          <p className="mb-5 text-sm md:text-base text-muted-foreground leading-relaxed">
-            围绕《霸王龙雷奇》三周年开展暑期整合营销，策划活动方案，协同推进<strong className="text-foreground font-semibold">5场</strong>线下活动落地。
-          </p>
+          <p className="mb-5 text-sm md:text-base text-muted-foreground leading-relaxed">围绕《霸王龙雷奇》三周年开展暑期整合营销，策划活动方案，协同推进<strong className="text-foreground font-semibold">5场</strong>线下活动落地。</p>
           <ul className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
             <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span><strong className="font-medium text-foreground">策划方案：</strong>设计活动主题、互动玩法与场景，制定执行方案。</span></li>
             <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span><strong className="font-medium text-foreground">现场落地：</strong>配合线下物料设计与制作，推进主题打卡及互动空间落地。</span></li>
             <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span><strong className="font-medium text-foreground">成果战报：</strong>基于活动数据复盘，制作发布<strong className="text-foreground font-semibold">6份</strong>战报，量化成效，支撑商务洽谈与资源拓展。</span></li>
           </ul>
         </div>
-        <div className="w-full lg:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <BilibiliGallery title="策划方案" images={bilibiliImages.proposal} />
-          <BilibiliGallery title="现场落地" images={bilibiliImages.onsite} />
+        <div className="w-full min-w-0">
+          <BilibiliGallery images={bilibiliImages.proposal} mode="proposal" onOpen={openImage} />
+          <p className="mt-2 text-xs text-muted-foreground/70 text-center">策划方案节选</p>
+          <div className="mt-10 space-y-9">
+            {bilibiliOnsiteGroups.map((group) => (
+              <section key={group.title} aria-label={group.title}>
+                <h4 className="mb-5 text-center font-serif text-lg font-bold text-foreground">{group.title}</h4>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6">
+                  {group.images.map((image, index) => (
+                    <figure key={image.src} className="min-w-0">
+                      <button type="button" onClick={() => openImage(group.images, index)} aria-label={`放大查看${image.alt}`} className="block w-full overflow-hidden rounded-xl border-2 border-white bg-white shadow-md transition-shadow hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="block w-full aspect-[3/2] object-contain" />
+                      </button>
+                      <figcaption className="mt-3 text-center text-sm leading-relaxed text-muted-foreground">
+                        <strong className="mb-1 block font-medium text-foreground">{image.alt}</strong>
+                        {image.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       </div>
 
       <div className="mt-8">
         <h4 className="text-base font-medium text-foreground mb-4">成果战报</h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {bilibiliReports.map((report) => (
-            <a key={report.href} href={report.href} target="_blank" rel="noopener noreferrer" className="group/report flex items-center justify-between gap-3 rounded-xl border border-border p-4 text-sm text-muted-foreground hover:text-primary hover:border-primary/40 hover:shadow-sm transition-all">
-              <span>{report.title}</span>
-              <ExternalLink className="w-4 h-4 shrink-0 text-primary/50 group-hover/report:text-primary" />
-            </a>
-          ))}
+        <div className="overflow-x-auto pb-3">
+          <div className="grid grid-cols-5 gap-3 sm:gap-4 min-w-[760px]">
+            {bilibiliReports.map((report) => (
+              <a key={report.href} href={report.href} target="_blank" rel="noopener noreferrer" className="group/report block min-w-0 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <img src={report.cover} alt={report.title + "战报封面"} loading="lazy" decoding="async" className="block w-full aspect-[3/4] object-contain rounded-xl border-2 border-white bg-white shadow-md transition-shadow group-hover/report:shadow-lg" />
+                <span className="mt-3 flex items-start justify-between gap-2 leading-relaxed"><span>{report.title}</span><ExternalLink className="w-4 h-4 mt-1 shrink-0 text-primary/50" /></span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
+      {viewer && <BilibiliLightbox viewer={viewer} onClose={() => setViewer(null)} onStep={stepImage} />}
     </div>
   )
 }
-
 
 export default function OperationPage() {
   const ayakaNotes = [
@@ -133,8 +228,12 @@ export default function OperationPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">内容运营</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">爆款内容 · 网感热点 · 视觉叙事</p>
+          <h1 className="font-serif text-4xl md:text-6xl font-light text-foreground mb-6">
+            内容运营
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            —— 爆款内容 · 网感热点 · 视觉叙事 ——
+          </p>
         </div>
       </section>
 
@@ -142,8 +241,7 @@ export default function OperationPage() {
         <div className="max-w-6xl mx-auto space-y-12">
           <BilibiliSection />
 
-          
-          {/* 01 小红书｜北海道Ayaka酱 */}
+          {/* 小红书｜北海道Ayaka酱 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
               <div className="flex-1 lg:max-w-md">
@@ -152,29 +250,66 @@ export default function OperationPage() {
                     <TrendingUp className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">01 小红书｜北海道Ayaka酱</h2>
-                    <p className="text-sm text-primary font-medium tracking-wide">HBC北海道放送实习</p>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                      小红书｜北海道Ayaka酱
+                    </h2>
+                    <p className="text-sm text-accent font-medium tracking-wide">
+                      HBC北海道放送实习
+                    </p>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>运营官方小红书账号，发布20+篇北海道观光笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>执行10+家店铺／景点取材，完成沟通、拍摄与内容制作。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" /><span>参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。</span></li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                    <span>运营官方小红书账号，发布20+篇北海道观光笔记。</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                    <span>执行10+家店铺／景点取材，完成沟通、拍摄与内容制作。</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-4 text-primary/40 mt-1 shrink-0" />
+                    <span>参与企划、剪辑与视觉设计，协助建立账号风格，实现涨粉 800+。</span>
+                  </li>
                 </ul>
               </div>
 
               <div className="w-full lg:flex-1">
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
-                  <Link href="https://xhslink.com/m/3SDaawO9bWr" target="_blank" className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all bg-white overflow-hidden group/profile">
-                    <Image src="/v0-designer-brand-tk/zhuye.jpg" alt="主页" fill className="object-contain p-1" />
-                    <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center rounded-2xl"><ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" /></div>
+                  <Link
+                    href="https://xhslink.com/m/3SDaawO9bWr"
+                    target="_blank"
+                    className="w-[200px] sm:w-[220px] h-[380px] relative rounded-2xl border-2 border-primary/10 shadow-lg hover:border-primary/40 transition-all bg-white overflow-hidden group/profile"
+                  >
+                    <Image
+                      src="/zhuye.jpg"
+                      alt="主页"
+                      fill
+                      className="object-contain p-1"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover/profile:bg-black/20 transition-colors flex items-center justify-center rounded-2xl">
+                      <ExternalLink className="text-white opacity-0 group-hover/profile:opacity-100 transition-opacity w-8 h-8" />
+                    </div>
                   </Link>
                   <div className="w-[240px] h-[400px] relative mt-8 sm:mt-0">
                     {ayakaNotes.map((note, index) => (
-                      <Link key={note.name} href={note.link} target="_blank" className="absolute block group/note transition-all duration-300 hover:scale-105 hover:!z-[100]" style={{ top: `${index * 30}px`, left: `${index * 30}px`, zIndex: index + 10 }}>
+                      <Link
+                        key={note.name}
+                        href={note.link}
+                        target="_blank"
+                        className="absolute block group/note transition-all duration-300 hover:scale-105 hover:!z-[100]"
+                        style={{ top: `${index * 30}px`, left: `${index * 30}px`, zIndex: index + 10 }}
+                      >
                         <div className="w-[180px] h-[320px] relative rounded-xl border-2 border-white shadow-2xl bg-white overflow-hidden">
-                          <Image src={`/v0-designer-brand-tk/${note.name}`} alt="笔记" fill className="object-contain p-0.5" />
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center z-10 rounded-xl"><ExternalLink className="w-8 h-8 text-white/80" /></div>
+                          <Image
+                            src={`/${note.name}`}
+                            alt="笔记"
+                            fill
+                            className="object-contain p-0.5"
+                          />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/note:opacity-100 transition-opacity flex items-center justify-center z-10 rounded-xl">
+                            <ExternalLink className="w-8 h-8 text-white/80" />
+                          </div>
                         </div>
                       </Link>
                     ))}
@@ -184,7 +319,7 @@ export default function OperationPage() {
             </div>
           </div>
 
-          {/* 02 小红书｜个人账号 */}
+          {/* 小红书｜个人账号 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group transition-all duration-300 hover:shadow-lg">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
               <div className="flex-1 lg:max-w-md">
@@ -193,23 +328,45 @@ export default function OperationPage() {
                     <Zap className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">02 小红书｜个人账号</h2>
-                    <p className="text-sm text-primary font-medium tracking-wide">娱乐追星内容创作</p>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                      小红书｜个人账号
+                    </h2>
+                    <p className="text-sm text-accent font-medium tracking-wide">
+                      娱乐追星内容创作
+                    </p>
                   </div>
                 </div>
                 <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>产出千赞笔记 15+篇，累计获赞 58,000+。</span></li>
-                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" /><span>在选题、标题与平台表达节奏上形成敏锐判断力。</span></li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
+                    <span>聚焦娱乐追星内容，擅长捕捉热点，创作具有网感的笔记。</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
+                    <span>产出千赞笔记 15+篇，累计获赞 61,000+。</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
+                    <span>在选题、标题与平台表达节奏上形成敏锐判断力。</span>
+                  </li>
                 </ul>
               </div>
 
               <div className="w-full lg:flex-1 flex justify-center lg:justify-end">
                 <div className="columns-2 sm:columns-3 gap-3 max-w-[520px]">
                   {personalNotes.map((note, index) => (
-                    <Link key={index} href={note.link} target="_blank" className="block mb-3 break-inside-avoid group/item transition-transform hover:scale-[1.03]">
+                    <Link
+                      key={index}
+                      href={note.link}
+                      target="_blank"
+                      className="block mb-3 break-inside-avoid group/item transition-transform hover:scale-[1.03]"
+                    >
                       <div className="relative rounded-xl border border-border shadow-md overflow-hidden bg-white">
-                        <img src={`/v0-designer-brand-tk/${note.name}`} alt="笔记" className="w-full h-auto object-contain block p-0.5" />
+                        <img
+                          src={`/${note.name}`}
+                          alt="笔记"
+                          className="w-full h-auto object-contain block p-0.5"
+                        />
                         <div className="absolute inset-0 bg-black/0 group-hover/item:bg-black/15 transition-colors flex items-center justify-center rounded-xl">
                           <ExternalLink className="text-white opacity-0 group-hover/item:opacity-100 transition-opacity w-5 h-5" />
                         </div>
@@ -221,17 +378,21 @@ export default function OperationPage() {
             </div>
           </div>
 
-          {/* 03 微信公众号项目 */}
+          {/* 公众号｜成都理工大学 */}
           <div className="bg-card rounded-xl p-8 shadow-sm border border-border group hover:shadow-lg transition-all duration-300">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
-              <div className="flex-1 lg:max-w-md"> 
+              <div className="flex-1 lg:max-w-md">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Users className="w-6 h-6 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">03 公众号｜成都理工大学</h2>
-                    <p className="text-sm text-primary font-medium tracking-wide">年度毕业季专题策划</p>
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
+                      公众号｜成都理工大学
+                    </h2>
+                    <p className="text-sm text-accent font-medium tracking-wide">
+                      年度毕业季专题策划
+                    </p>
                   </div>
                 </div>
                 <ul className="space-y-4 mb-8 text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -245,31 +406,50 @@ export default function OperationPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary/40 mt-1 shrink-0" />
-                    <span>最终阅读量达 1.6万+，成为历届毕业季中热度最高的作品。</span>
+                    <span>最终阅读量达1.6万+，成为历届毕业季中热度最高的作品。</span>
                   </li>
                 </ul>
               </div>
-              
+
               <div className="w-full lg:flex-1">
                 <div className="flex flex-col sm:flex-row gap-8 items-center justify-center lg:justify-end">
                   {/* 左侧：yangjiji.png 效果图 */}
                   <div className="w-[220px] h-[380px] relative rounded-2xl overflow-hidden drop-shadow-xl shrink-0">
-                    <Image src="/v0-designer-brand-tk/yangjiji.png" alt="效果图展示" fill className="object-contain" />
+                    <Image
+                      src="/yangjiji.png"
+                      alt="效果图展示"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                  
-                  {/* 右侧：biye.jpg 封面图 + 跳转链接 - 保持原尺寸比例，放大一倍 */}
-                  <Link 
-                    href="https://mp.weixin.qq.com/s/VVMjfiyVM_RZ6SGPZ_FLAw" 
-                    target="_blank" 
-                    className="w-full sm:max-w-[640px] relative rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
-                  >
-                    <div className="w-full h-full">
-                      <img src="/v0-designer-brand-tk/biye.jpg" alt="文章封面图" className="w-full h-auto block" />
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
-                      <ExternalLink className="text-white opacity-0 group-hover/cover:opacity-100 transition-opacity w-6 h-6" />
-                    </div>
-                  </Link>
+
+                  {/* 右侧：biye.jpg 封面图 + 跳转链接 */}
+                  <div className="w-full sm:max-w-[640px] flex flex-col items-center gap-4">
+                    <Link
+                      href="https://mp.weixin.qq.com/s/VVMjfiyVM_RZ6SGPZ_FLAw"
+                      target="_blank"
+                      className="w-full relative rounded-xl border border-border shadow-md overflow-hidden bg-white group/cover transition-transform hover:scale-[1.02]"
+                    >
+                      <div className="w-full h-full">
+                        <img
+                          src="/biye.jpg"
+                          alt="文章封面图"
+                          className="w-full h-auto block"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-black/0 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
+                        <ExternalLink className="text-white opacity-0 group-hover/cover:opacity-100 transition-opacity w-6 h-6" />
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="https://mp.weixin.qq.com/s/VVMjfiyVM_RZ6SGPZ_FLAw"
+                      target="_blank"
+                      className="text-sm text-accent font-medium tracking-wide hover:opacity-80 transition-opacity"
+                    >
+                      点击查看原文
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -279,24 +459,24 @@ export default function OperationPage() {
 
       {/* 返回主页按钮 - 放置在内容与页脚之间 */}
       <div className="py-12 flex justify-center">
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="group flex items-center gap-2 px-8 py-3 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1"
         >
           <span className="font-medium">返回主页</span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="18" 
-            height="18" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2.5" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="group-hover:translate-x-1 transition-transform"
           >
-            <path d="m9 18 6-6-6-6"/>
+            <path d="m9 18 6-6-6-6" />
           </svg>
         </Link>
       </div>
